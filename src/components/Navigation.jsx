@@ -1,7 +1,8 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux'
 
 function Navigation() {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
+
     return (
         <nav>
             <button onClick={() => {
