@@ -6,7 +6,7 @@ import { store } from './store';
 import Header from './components/Header';
 import Error from './components/Error';
 import Home from './pages/Home';
-import Questionnaire from './pages/Questionnaire';
+import CheckIn from './pages/Check-in';
 import Navigation from './components/Navigation';
 
 ReactDOM.render(
@@ -17,7 +17,7 @@ ReactDOM.render(
         <Routes>
           <Route path='*' element={<Error />} />
           <Route exact path="/" element={<Home />} />
-          <Route path="/questionnaire" element={<Questionnaire />} />
+          <Route path="/check-in" element={<CheckIn />} />
         </Routes>
         <Navigation />
       </Router>

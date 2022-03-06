@@ -1,8 +1,9 @@
 import { createStore } from 'redux';
 
 const initialState = {
+    language: 0,
     currentPage: 0,
-    totalPages: 4
+    totalPages: 5
 };
 
 const prevPageAction = {
@@ -30,7 +31,6 @@ export const store = createStore(reducer, initialState);
 store.subscribe(
     // This function is executed any time the state has changed
     () => {
-        alert('new state! !!!')
         //const state = store.getState();
     }
 )
