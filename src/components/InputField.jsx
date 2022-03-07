@@ -3,6 +3,8 @@ import { DateRangePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import React from "react"
 
+import SignatureCanvas from 'react-signature-canvas'
+
 function GenerateInputField(props) {
     const label = props.label
     const type = props.type
@@ -12,6 +14,18 @@ function GenerateInputField(props) {
     const [endDate, setEndDate] = React.useState()
     const [focusedInput, setFocusedInput] = React.useState()
 
+    
+    if (type === "sign") {
+        return (
+            <div>
+                <SignatureCanvas
+                    penColor='black'
+                    canvasProps={{width: 500, height: 200, className: 'sigCanvas'}}
+                />
+                <button>clear</button>
+            </div>
+        )
+    }
     if (type === "arrivalAndDepartureDates") {
         return (
             <DateRangePicker
@@ -27,7 +41,16 @@ function GenerateInputField(props) {
                         type: "updateAnswer",
                         payload: {
                             question: "arrivalDate",
-                            value: [startDate]
+                            value: [startDate.format('YYYY-MM-DD')]
+                        }
+                    }
+                )
+                dispatch(
+                    {
+                        type: "updateAnswer",
+                        payload: {
+                            question: "departureDate",
+                            value: [endDate.format('YYYY-MM-DD')]
                         }
                     }
                 )

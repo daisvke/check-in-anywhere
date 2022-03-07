@@ -1,7 +1,4 @@
-
 import { Link } from 'react-router-dom'
-import { store } from '../store'
-import { useSelector } from 'react-redux'
 
 function Home() {/*
   const state = store.getState()
