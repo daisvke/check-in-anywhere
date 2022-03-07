@@ -1,11 +1,26 @@
 import { createStore } from 'redux';
 
 const initialState = {
-    language: 0,
+    language: "",
     currentPage: 0,
     totalPages: 5,
     // Elements from the questionaire :
-    roomNumber: 0
+    roomNumber: 0,
+    arrivalDate: "",
+    departureDate: "",
+    surname: "",
+    firstname: "",
+    birthDate: "",
+    birthPlace: "",
+    nationality: "",
+    address: "",
+    mobile: "",
+    email: "",
+    mobileNumber: "",
+    date: "",
+    sign: "",
+    cbNumber: "",
+    cbExpDate: ""
 };
 
 function reducer(state = initialState, action) {

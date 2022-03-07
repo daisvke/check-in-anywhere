@@ -2,49 +2,45 @@ import { useSelector } from 'react-redux'
 import ChooseLanguage from '../components/Language'
 import GenerateInputField from '../components/InputField'
 
-function getFormElementAccordingToCurrentPage() {
-    const formElements = [
-        "surname",
-
-        "firstname",
-        "date of birth",
-        "place of birth",
-        "nationality",
-        "permanent address",
-        "mobile number",
-        "e-mail address",
-        "date of arrival at the establishment and intended date of departure",
-        "Date",
-        "Signature",
-        "credit card number",
-        "expiration date",
-        ""]
+function getFormElements() {
+    return [
+        {label: "room number", type: "roomNumber"},             // 0
+        {label: "surname", type: "surname"},                    // 1
+        {label: "firstname", type: "firstname"},                // 2
+        {label: "date of arrival at the establishment and intended date of departure",
+            type: "arrivalAndDepartureDates"},        // 3
+        {label: "date of birth", type: "birthDate"},            // 5
+        {label: "place of birth", type: "birthPlace"},          // 6
+        {label: "nationality", type: "nationality"},            // 7
+        {label: "permanent address", type: "address"},          // 8
+        {label: "mobile number", type: "mobile"},               // 9
+        {label: "e-mail address", type: "email"},               // 10
+        {label: "mobile number", type: "mobileNumber"},         // 11
+        {label: "date", type: "date"},                          // 12
+        {label: "signature", type: "sign"},                     // 13
+        {label: "credit card number", type: "cbNumber"},        // 14
+        {label: "expiration date", type: "cbExpDate"}           // 15
+        ]
 }
 //CHILDREN
 function CheckIn() {
-    <p>This is the Questionnaire</p>
-   // const state = store.getState()
     const currentPage = useSelector((state) => state.currentPage)
+    const formElements = getFormElements()
+
     if (currentPage === 0) {
         return (<ChooseLanguage />)
     }
     if (currentPage === 1) {
+        var questions = []
+        for (var i=0; i < 5; ++i) {
+            questions.push(<GenerateInputField
+                key={`${formElements[i]}-${i}`}
+                label={formElements[i].label}
+                type={formElements[i].type}
+        />)}
         return (
             <form>
-                <GenerateInputField label="room number" type="roomNumber" />
-   
-            </form>
-        )
-    }}
-    /*
-    if (currentPage === 1) {
-        return (
-            <form>
-                <GenerateInputField label="room number" type="roomNumber" />
-                {GenerateInputField("check-in date")}
-                {GenerateInputField("check-out date")}
-                {GenerateInputField("firstname")}
-                {GenerateInputField("surname")}
+                { questions }
             </form>
         )
     }
@@ -85,6 +81,6 @@ function CheckIn() {
             </form>
         )
     }
-}*/
+}
 
 export default CheckIn
