@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import ChooseLanguage from '../components/Language'
 import GenerateInputField from '../components/InputField'
 
-function getFormElements() {
+export function getFormElements() {
     return [
         {label: "room number", type: "roomNumber"},             // 0
         {label: "surname", type: "surname"},                    // 1
@@ -24,7 +24,7 @@ function getFormElements() {
 //CHILDREN
 
 function getSelectedQuestions(start, end) {
-    var questions = []
+    const questions = []
     const formElements = getFormElements()
 
     for (var i=start; i < end; ++i) {

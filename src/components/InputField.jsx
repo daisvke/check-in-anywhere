@@ -1,19 +1,22 @@
-import { useDispatch } from 'react-redux'
-import { DateRangePicker } from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css';
-import React from "react"
-
+import { useDispatch }  from 'react-redux'
+import { useSelector } from 'react-redux'
+import { DateRangePicker } from 'react-dates'
+import 'react-dates/lib/css/_datepicker.css'
+import React, { useRef } from "react"
 import SignatureCanvas from 'react-signature-canvas'
 
-function GenerateInputField(props) {
-    const label = props.label
-    const type = props.type
+function GenerateInputField({label, type}) {
     const dispatch = useDispatch()
 
     const [startDate, setStartDate] = React.useState()
     const [endDate, setEndDate] = React.useState()
     const [focusedInput, setFocusedInput] = React.useState()
+    const canvasRef = React.useRef({})
+    const currentValue = useSelector(state => state[type])
 
+    function clearCanvas() {
+        canvasRef.current.clear()
+    }
     
     if (type === "sign") {
         return (
@@ -21,8 +24,9 @@ function GenerateInputField(props) {
                 <SignatureCanvas
                     penColor='black'
                     canvasProps={{width: 500, height: 200, className: 'sigCanvas'}}
+                    ref={ canvasRef }
                 />
-                <button>clear</button>
+                <button onClick={() => {clearCanvas()}}>clear</button>
             </div>
         )
     }
@@ -62,7 +66,8 @@ function GenerateInputField(props) {
     return (
         <label>
             { label }
-            <input type="text" name={label} 
+            <input type="text" name={label}
+            value={currentValue}
             onChange={(e) => dispatch(
                 {
                     type: "updateAnswer",
@@ -72,7 +77,6 @@ function GenerateInputField(props) {
                     }
                 }
             )} />
-    
         </label>
     )
 }

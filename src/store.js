@@ -37,7 +37,7 @@ function reducer(state = initialState, action) {
         const answer = action.payload.value;
         console.log("question: " + question);
         console.log("answer: " + answer);
-        return {...state, [question]: [answer] }
+        return {...state, [question]: [answer]}
     }
     return state;
 }
