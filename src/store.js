@@ -3,7 +3,7 @@ import { createStore } from 'redux';
 const initialState = {
     language: "",
     currentPage: 0,
-    totalPages: 5,
+    totalPages: 6,
     // Elements from the questionaire :
     roomNumber: "",
     arrivalDate: "",
@@ -44,6 +44,7 @@ function reducer(state = initialState, action) {
 
 export const store = createStore(reducer, initialState);
 
+/*
 store.subscribe(
     // This function is executed any time the state has changed
     () => {
@@ -51,3 +52,4 @@ store.subscribe(
         console.log(state.roomNumber);
     }
 )
+*/

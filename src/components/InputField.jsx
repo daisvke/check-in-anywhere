@@ -1,73 +1,19 @@
-import { useDispatch }  from 'react-redux'
 import { useSelector } from 'react-redux'
-import { DateRangePicker } from 'react-dates'
-import 'react-dates/lib/css/_datepicker.css'
-import React, { useRef } from "react"
-import SignatureCanvas from 'react-signature-canvas'
-
+import { useDispatch }  from 'react-redux'
+import Calendar from './Calendar'
+import Signature from './Signature'
 
 function GenerateInputField({label, type}) {
     const dispatch = useDispatch()
-
-    const [startDate, setStartDate] = React.useState()
-    const [endDate, setEndDate] = React.useState()
-    const arrivalDate = useSelector(state => state.arrivalDate)
-    const departureDate = useSelector(state => state.departureDate)
-    const [focusedInput, setFocusedInput] = React.useState()
-    const canvasRef = React.useRef({})
     const currentValue = useSelector(state => state[type])
-
-    function clearCanvas() {
-        canvasRef.current.clear()
-    }
     
     if (type === "sign") {
         return (
-            <div>
-                <p>Please sign here:</p>
-                <SignatureCanvas
-                    penColor='black'
-                    canvasProps={{width: 500, height: 200, className: 'sigCanvas'}}
-                    ref={ canvasRef }
-                />
-                <button onClick={() => {clearCanvas()}}>clear</button>
-            </div>
+            <Signature />
         )
     }
     if (type === "arrivalAndDepartureDates") {
-        return (
-            <DateRangePicker
-                startDatePlaceholderText={arrivalDate || "Arrival Date"}
-                endDatePlaceholderText={departureDate || "Departure Date"}
-                startDate={startDate}
-                startDateId="start-date"
-                endDate={endDate}
-                endDateId="end-date"
-                onDatesChange={({ startDate, endDate }) => {
-                setStartDate(startDate)
-                setEndDate(endDate)
-                dispatch(
-                    {
-                        type: "updateAnswer",
-                        payload: {
-                            question: "arrivalDate",
-                            value: [startDate.format('YYYY-MM-DD')]
-                        }
-                    }
-                )
-                dispatch(
-                    {
-                        type: "updateAnswer",
-                        payload: {
-                            question: "departureDate",
-                            value: [endDate.format('YYYY-MM-DD')]
-                        }
-                    }
-                )
-              }}
-              focusedInput={focusedInput}
-              onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
-            />)
+        return <Calendar />
     }
     return (
         <label>

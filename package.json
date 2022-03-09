@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-dates": "^21.8.3",
     "prettier": "^2.5.1"
   }
 }

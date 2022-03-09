@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import ChooseLanguage from '../components/Language'
 import GenerateInputField from '../components/InputField'
-
+import React from 'react'
 function getFormElements() {
     return [
         {label: "room number", type: "roomNumber"},             // 0
@@ -41,8 +41,26 @@ function getSelectedQuestions(start, end) {
 }
 
 function CheckIn() {
-    const currentPage = useSelector((state) => state.currentPage)
+    function TodoListItem(props) {
+        const todo = useSelector((state) => state.todos[props.id])
+        console.log("todo.text")
+        return <div>{todo.text}</div>
+      }
+      const data = TodoListItem
 
+    const currentPage = useSelector(state => state.currentPage)
+
+    /*
+    for (var i=0; i < 6; ++i) {
+        data.push(<li>{s[i]}</li>)
+    }
+
+                           s.map((question, index) => (
+                            data.push( <li key={`${question}-${index}`}>
+                { question }
+            </li>)
+        ))}
+  */                      
     if (currentPage === 0)
         return <ChooseLanguage />
     if (currentPage === 1)
@@ -55,6 +73,16 @@ function CheckIn() {
         return getSelectedQuestions(10, 11)
     if (currentPage === 5)
         return getSelectedQuestions(11, 13)
+    if (currentPage === 6)
+    {
+        return (
+            <div>
+{                <ul>
+                    {data}
+                </ul>}
+            </div>
+        )
+    }
 }
 
 export default CheckIn
