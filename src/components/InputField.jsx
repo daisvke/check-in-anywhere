@@ -5,11 +5,14 @@ import 'react-dates/lib/css/_datepicker.css'
 import React, { useRef } from "react"
 import SignatureCanvas from 'react-signature-canvas'
 
+
 function GenerateInputField({label, type}) {
     const dispatch = useDispatch()
 
     const [startDate, setStartDate] = React.useState()
     const [endDate, setEndDate] = React.useState()
+    const arrivalDate = useSelector(state => state.arrivalDate)
+    const departureDate = useSelector(state => state.departureDate)
     const [focusedInput, setFocusedInput] = React.useState()
     const canvasRef = React.useRef({})
     const currentValue = useSelector(state => state[type])
@@ -21,6 +24,7 @@ function GenerateInputField({label, type}) {
     if (type === "sign") {
         return (
             <div>
+                <p>Please sign here:</p>
                 <SignatureCanvas
                     penColor='black'
                     canvasProps={{width: 500, height: 200, className: 'sigCanvas'}}
@@ -33,11 +37,13 @@ function GenerateInputField({label, type}) {
     if (type === "arrivalAndDepartureDates") {
         return (
             <DateRangePicker
-              startDate={startDate}
-              startDateId="start-date"
-              endDate={endDate}
-              endDateId="end-date"
-              onDatesChange={({ startDate, endDate }) => {
+                startDatePlaceholderText={arrivalDate || "Arrival Date"}
+                endDatePlaceholderText={departureDate || "Departure Date"}
+                startDate={startDate}
+                startDateId="start-date"
+                endDate={endDate}
+                endDateId="end-date"
+                onDatesChange={({ startDate, endDate }) => {
                 setStartDate(startDate)
                 setEndDate(endDate)
                 dispatch(

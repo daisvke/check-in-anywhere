@@ -5,7 +5,7 @@ const initialState = {
     currentPage: 0,
     totalPages: 5,
     // Elements from the questionaire :
-    roomNumber: 0,
+    roomNumber: "",
     arrivalDate: "",
     departureDate: "",
     surname: "",

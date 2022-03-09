@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import ChooseLanguage from '../components/Language'
 import GenerateInputField from '../components/InputField'
 
-export function getFormElements() {
+function getFormElements() {
     return [
         {label: "room number", type: "roomNumber"},             // 0
         {label: "surname", type: "surname"},                    // 1
@@ -15,10 +15,9 @@ export function getFormElements() {
         {label: "permanent address", type: "address"},          // 7
         {label: "mobile number", type: "mobile"},               // 8
         {label: "e-mail address", type: "email"},               // 9
-        {label: "date", type: "date"},                          // 10
-        {label: "signature", type: "sign"},                     // 11
-        {label: "credit card number", type: "cbNumber"},        // 12
-        {label: "expiration date", type: "cbExpDate"}           // 13
+        {label: "signature", type: "sign"},                     // 10
+        {label: "credit card number", type: "cbNumber"},        // 11
+        {label: "expiration date", type: "cbExpDate"}           // 12
         ]
 }
 //CHILDREN
@@ -53,9 +52,9 @@ function CheckIn() {
     if (currentPage === 3)
         return getSelectedQuestions(8, 10)
     if (currentPage === 4)
-        return getSelectedQuestions(10, 12)
+        return getSelectedQuestions(10, 11)
     if (currentPage === 5)
-        return getSelectedQuestions(12, 14)
+        return getSelectedQuestions(11, 13)
 }
 
 export default CheckIn
