@@ -5,8 +5,14 @@ function ChooseLanguage() {
 
     return (
         <ul>
-            <li onClick={() => {dispatch({type: "nextPage"})}}>English</li>
-            <li onClick={() => {dispatch({type: "nextPage"})}} >French</li>
+            <li onClick={() => {
+                dispatch({ type: "nextPage" });
+                dispatch({ type: "updateAnswer", payload: {question: "language", value: "eng"} })
+            }}>english</li>
+            <li onClick={() => {
+                dispatch({ type: "nextPage" });
+                dispatch({ type: "updateAnswer", payload: {question: "language", value: "fr"} })
+            }}>french</li>
         </ul>
     )
 }

@@ -39,18 +39,12 @@ function reducer(state = initialState, action) {
 			draft.questions[question] = answer
 		})
     }
-	if (action.type === "sign") {
-		const signURL = action.payload.URL
-		return produce(state, (draft) => {
-			draft.questions.sign = signURL
-		})
-	}
     return state;
 }
 
 export const store = createStore(reducer, initialState);
 
-
+/*
 store.subscribe(
     // This function is executed any time the state has changed
     () => {
@@ -58,3 +52,4 @@ store.subscribe(
         console.log(state.questions.sign);
     }
 )
+*/

@@ -15,8 +15,8 @@ function Signature() {
             const signURL = canvasRef.current.getTrimmedCanvas().toDataURL('image/png')
 //            console.log(signURL)
             dispatch({
-                type: "sign",
-                payload: {URL: signURL}
+                type: "updateAnswer",
+                payload: {question: "sign", value: signURL}
             })
         }
     }
