@@ -5,8 +5,8 @@ import Signature from './Signature'
 
 function GenerateInputField({label, type}) {
     const dispatch = useDispatch()
-    const currentValue = useSelector(state => state[type])
-    
+    const currentValue = useSelector(state => state.questions[type])
+        
     if (type === "sign") {
         return (
             <Signature />

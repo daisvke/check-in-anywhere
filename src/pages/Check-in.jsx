@@ -46,15 +46,11 @@ function CheckIn() {
         console.log("todo.text")
         return <div>{todo.text}</div>
       }
-      const data = TodoListItem
+      const data = []
 
     const currentPage = useSelector(state => state.currentPage)
-
-    /*
-    for (var i=0; i < 6; ++i) {
-        data.push(<li>{s[i]}</li>)
-    }
-
+    
+/*
                            s.map((question, index) => (
                             data.push( <li key={`${question}-${index}`}>
                 { question }
@@ -77,9 +73,13 @@ function CheckIn() {
     {
         return (
             <div>
-{                <ul>
-                    {data}
-                </ul>}
+               <ul>
+   { state => state.questions.map((question, index) => (
+                        <li key={`${question}-${index}`}>
+                { question }
+            </li>)
+        )}
+                </ul>
             </div>
         )
     }
