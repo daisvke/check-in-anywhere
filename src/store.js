@@ -7,18 +7,17 @@ const initialState = {
     totalPages: 6,
     // Elements from the questionaire :
 	questions: {
+        surname: "",
+		firstname: "",
 		roomNumber: "",
 		arrivalDate: "",
 		departureDate: "",
-		surname: "",
-		firstname: "",
 		birthDate: "",
 		birthPlace: "",
 		nationality: "",
 		address: "",
 		mobile: "",
 		email: "",
-		date: "",
 		sign: "",
 		cbNumber: "",
 		cbExpDate: "" 

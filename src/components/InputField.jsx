@@ -2,19 +2,17 @@ import { useSelector } from 'react-redux'
 import { useDispatch }  from 'react-redux'
 import Calendar from './Calendar'
 import Signature from './Signature'
+import styled from 'styled-components'
+//import propTypes from 'prop-types'
 
 function GenerateInputField({label, type}) {
     const dispatch = useDispatch()
-    const currentValue = useSelector(state => state.questions[type])
-        
-    if (type === "sign") {
-        return (
-            <Signature />
-        )
-    }
-    if (type === "arrivalAndDepartureDates") {
+    const currentValue = useSelector(state => state.questions[type])    
+
+    if (type === "sign")
+        return <Signature />
+    if (type === "arrivalAndDepartureDates")
         return <Calendar />
-    }
     return (
         <label>
             { label }
@@ -32,5 +30,11 @@ function GenerateInputField({label, type}) {
         </label>
     )
 }
+/*
+GenerateInputField.protoTypes = {
+    label: propTypes.string.isRequired,
+    type: propTypes.string.isRequired
+}
+*/
 
 export default GenerateInputField

@@ -3,12 +3,13 @@ import ChooseLanguage from '../components/Language'
 import GenerateInputField from '../components/InputField'
 import React from 'react'
 import Confirmation from '../components/Confirmation'
+import styled from 'styled-components'
 
 export function getFormElements() {
     return [
-        {label: "room number", type: "roomNumber"},             // 0
+        {label: "firstname", type: "firstname"},                // 0
         {label: "surname", type: "surname"},                    // 1
-        {label: "firstname", type: "firstname"},                // 2
+        {label: "room number", type: "roomNumber"},             // 2
         {label: "date of arrival at the establishment and intended date of departure",
             type: "arrivalAndDepartureDates"},                  // 3
         {label: "date of birth", type: "birthDate"},            // 4
@@ -34,11 +35,19 @@ function getSelectedQuestions(start, end) {
             label={formElements[i].label}
             type={formElements[i].type}
     />)}
-
+    
+    const CheckinForm = styled.div`
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 60vh;
+        width: 80vw;
+    `
     return (
-        <form>
+        <CheckinForm>
             { questions }
-        </form>
+        </CheckinForm>
     )
 }
 

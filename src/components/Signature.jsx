@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import SignatureCanvas from 'react-signature-canvas'
 
 function Signature() {
-  //  const signURL = useSelector(state => state.questions.sign)
     const dispatch = useDispatch()
 
     function clearCanvas() {
@@ -13,14 +12,13 @@ function Signature() {
     function trimCanvas() {
         if (canvasRef.current) {
             const signURL = canvasRef.current.getTrimmedCanvas().toDataURL('image/png')
-//            console.log(signURL)
             dispatch({
                 type: "updateAnswer",
                 payload: {question: "sign", value: signURL}
             })
         }
     }
-  //  const canvasRef = useSelector(state => state.questions.sign)
+    
     const canvasRef = React.useRef()
     return (
         <div>
@@ -35,7 +33,7 @@ function Signature() {
                     style: {border: '1px solid blue'}
                 }}
             />
-            <div onClick={() => {clearCanvas()}}>clear</div>
+            <button onClick={() => {clearCanvas()}}>clear</button>
         </div>
     )
 }

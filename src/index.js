@@ -14,6 +14,7 @@ ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
       <Router>
+        <div>
         <Header />
         <Routes>
           <Route path='*' element={<Error />} />
@@ -21,6 +22,7 @@ ReactDOM.render(
           <Route path="/check-in" element={<CheckIn />} />
         </Routes>
         <Navigation />
+        </div>
       </Router>
     </React.StrictMode>
   </Provider>,

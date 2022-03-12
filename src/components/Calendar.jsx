@@ -8,8 +8,8 @@ function Calendar() {
     const dispatch = useDispatch()
     const [startDate, setStartDate] = React.useState()
     const [endDate, setEndDate] = React.useState()
-    const arrivalDate = useSelector(state => state.arrivalDate)
-    const departureDate = useSelector(state => state.departureDate)
+    const arrivalDate = useSelector(state => state.questions.arrivalDate)
+    const departureDate = useSelector(state => state.questions.departureDate)
     const [focusedInput, setFocusedInput] = React.useState()
 
     return (

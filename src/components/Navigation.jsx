@@ -1,16 +1,23 @@
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
-import { useRef } from 'react'
 import React from 'react'
+import styled from 'styled-components'
 
 function Navigation() {
     const dispatch = useDispatch()
     const currentPage = useSelector(state => state.currentPage)
     const totalPages = useSelector(state => state.totalPages)
-    const canvasRef = React.useRef({})
+
+    const FormNav = styled.nav`
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 80vw;
+    `
 
     return (
-        <nav>
+        <FormNav>
             {(currentPage > 0) && <button onClick={() => {
                 dispatch({ type: "prevPage" })
             }}>
@@ -21,7 +28,7 @@ function Navigation() {
             }}>
                 NEXT
             </button>}
-        </nav>
+        </FormNav>
     )
 }
 
