@@ -27,6 +27,8 @@ const initialState = {
 function reducer(state = initialState, action) {
     const homePage = 0;
     const totalPages = state.totalPages;
+    if (action.type === "resetPage")
+        return produce(state, (draft) => {draft.currentPage = 0})
     if (action.type === "prevPage" && state.currentPage > homePage)
         return produce(state, (draft) => {--draft.currentPage});
     if (action.type === "nextPage" && state.currentPage < totalPages)

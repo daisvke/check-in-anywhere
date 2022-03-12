@@ -5,9 +5,17 @@ import Signature from './Signature'
 import styled from 'styled-components'
 //import propTypes from 'prop-types'
 
+const Input = styled.input`
+    border: 0;
+    border-bottom: 1px solid black;
+    &:focus {
+        outline: 0;   
+    }
+`
+
 function GenerateInputField({label, type}) {
     const dispatch = useDispatch()
-    const currentValue = useSelector(state => state.questions[type])    
+    const currentValue = useSelector(state => state.questions[type])
 
     if (type === "sign")
         return <Signature />
@@ -16,7 +24,7 @@ function GenerateInputField({label, type}) {
     return (
         <label>
             { label }
-            <input type="text" name={label}
+            <Input type="text" name={label}
             value={currentValue}
             onChange={(e) => dispatch(
                 {

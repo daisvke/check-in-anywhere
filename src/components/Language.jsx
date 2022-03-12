@@ -1,30 +1,37 @@
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 
+const LanguageList = styled.ul`
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-items: center;
+height: 60vh;
+list-style: none;
+font-size: 1.3em;
+`
+
+const Language = styled.li`
+&:hover {
+    cursor: pointer;
+    opacity: .7;
+}
+`
+
 function ChooseLanguage() {
     const dispatch = useDispatch();
 
-    const SelectLanguage = styled.ul`
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        height: 60vh;
-        width: 80vw;
-        list-style: none;
-        font-size: 2em;
-    `
     return (
-        <SelectLanguage>
-            <li onClick={() => {
+        <LanguageList>
+            <Language onClick={() => {
                 dispatch({ type: "nextPage" });
                 dispatch({ type: "updateAnswer", payload: {question: "language", value: "eng"} })
-            }}>english</li>
-            <li onClick={() => {
+            }}>english</Language>
+            <Language onClick={() => {
                 dispatch({ type: "nextPage" });
                 dispatch({ type: "updateAnswer", payload: {question: "language", value: "fr"} })
-            }}>french</li>
-        </SelectLanguage>
+            }}>french</Language>
+        </LanguageList>
     )
 }
 

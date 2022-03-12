@@ -1,19 +1,32 @@
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+const HeaderNav = styled.nav`
+height: 13vh;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+align-items: center;
+`
+
+const HeaderTitle = styled.h1`
+color: #00a9ff;
+`
+
+const HeaderLink = styled(Link)`
+background-color: #00a9ff;
+padding: 0.1em;
+color: white;
+text-decoration: none;
+`
+
 function Header() {
-    const HeaderNav = styled.nav`
-        height: 13vh;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        color: #00a9ff;
-    `
+    const dispatch = useDispatch()
     return (
         <HeaderNav>
-            <Link to="/">HOME</Link>
-            <h1>CHECK IN ANYWHERE</h1>
+            <HeaderLink to="/" onClick={dispatch({type:"resetPage"})}>HOME</HeaderLink>
+            <HeaderTitle>CHECK IN ANYWHERE</HeaderTitle>
         </HeaderNav>
     )
 }

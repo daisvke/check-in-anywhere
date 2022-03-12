@@ -13,10 +13,19 @@ function Home() {/*
     height: 50vh;
     width: 100vw;
   `
+  const HomeLink = styled(Link)`
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: 500;
+    color: #e8b7db;
+    &:hover {
+      opacity: .7;
+    }
+  `
 
   return (
     <HomeDiv>
-      <Link to="./check-in">START CHECK-IN !</Link>
+      <HomeLink to="./check-in">START CHECK-IN !</HomeLink>
     </HomeDiv>
   );
 }
