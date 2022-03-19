@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
+import colors from '../utils/colors';
 
 function Home() {/*
   const state = store.getState()
@@ -17,7 +18,10 @@ function Home() {/*
     text-decoration: none;
     font-size: 1.5em;
     font-weight: 500;
-    color: #e8b7db;
+    color: white;
+    background-color: ${colors.pink};
+    padding: .6em;
+    border-radius: 30px;
     &:hover {
       opacity: .7;
     }

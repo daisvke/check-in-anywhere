@@ -15,18 +15,29 @@ function Navigation() {
         align-items: center;
     `
 
+    const FormButton = styled.button`
+        color: white;
+        background-color: #e8b7db;
+        padding: .3em;
+        border-radius: 30px;
+        font-weight: 600;
+        &:hover {
+            opacity: .7;
+        }
+    `
+
     return (
         <FormNav>
-            {(currentPage > 0) && <button onClick={() => {
+            {(currentPage > 0) && <FormButton onClick={() => {
                 dispatch({ type: "prevPage" })
             }}>
                 PREV
-            </button>}
-            {currentPage > 0 && (currentPage < totalPages) && <button onClick={() => {
+            </FormButton>}
+            {currentPage > 0 && (currentPage < totalPages) && <FormButton onClick={() => {
                 dispatch({ type: "nextPage" });
             }}>
                 NEXT
-            </button>}
+            </FormButton>}
         </FormNav>
     )
 }

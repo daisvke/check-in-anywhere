@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import colors from '../utils/colors'
 
 const HeaderNav = styled.nav`
 height: 13vh;
@@ -11,11 +12,11 @@ align-items: center;
 `
 
 const HeaderTitle = styled.h1`
-color: #00a9ff;
+color: ${colors.blue};
 `
 
 const HeaderLink = styled(Link)`
-background-color: #00a9ff;
+background-color: ${colors.blue};
 padding: 0.1em;
 color: white;
 text-decoration: none;

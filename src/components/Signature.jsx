@@ -1,6 +1,14 @@
 import React, { useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import SignatureCanvas from 'react-signature-canvas'
+import styled from 'styled-components'
+
+const SignContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+`
 
 function Signature() {
     const dispatch = useDispatch()
@@ -21,7 +29,7 @@ function Signature() {
     
     const canvasRef = React.useRef()
     return (
-        <div>
+        <SignContainer>
             <p>Please sign here:</p>
             <SignatureCanvas
                 ref={ canvasRef }
@@ -34,7 +42,7 @@ function Signature() {
                 }}
             />
             <button onClick={() => {clearCanvas()}}>clear</button>
-        </div>
+        </SignContainer>
     )
 }
 

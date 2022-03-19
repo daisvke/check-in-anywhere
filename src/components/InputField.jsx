@@ -8,9 +8,18 @@ import styled from 'styled-components'
 const Input = styled.input`
     border: 0;
     border-bottom: 1px solid black;
+    width: 20vw;
+    text-align: center;
     &:focus {
         outline: 0;   
     }
+`
+
+const InputContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 `
 
 function GenerateInputField({label, type}) {
@@ -22,8 +31,10 @@ function GenerateInputField({label, type}) {
     if (type === "arrivalAndDepartureDates")
         return <Calendar />
     return (
-        <label>
-            { label }
+        <InputContainer>
+            <label>
+                { label }
+            </label>
             <Input type="text" name={label}
             value={currentValue}
             onChange={(e) => dispatch(
@@ -35,7 +46,7 @@ function GenerateInputField({label, type}) {
                     }
                 }
             )} />
-        </label>
+        </InputContainer>
     )
 }
 /*

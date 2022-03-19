@@ -21,7 +21,6 @@ function Confirmation() {
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
-        width: 80vw;
     `
 
     const ConfirmList = styled.ul`
@@ -30,6 +29,8 @@ function Confirmation() {
         justify-content: space-around;
         align-items: left;
         list-style: none;
+        padding-left: 10vw;
+        padding-right: 10vw;
     `
     const signURL = useSelector(state => state.questions.sign)
 

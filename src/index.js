@@ -9,12 +9,20 @@ import Error from './components/Error'
 import Home from './pages/Home'
 import CheckIn from './pages/Check-in'
 import Navigation from './components/Navigation'
+import styled, { createGlobalStyle } from 'styled-components';
+
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+`
 
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
       <Router>
-        <div>
+        <MainContainer>
         <Header />
         <Routes>
           <Route path='*' element={<Error />} />
@@ -22,7 +30,7 @@ ReactDOM.render(
           <Route path="/check-in" element={<CheckIn />} />
         </Routes>
         <Navigation />
-        </div>
+        </MainContainer>
       </Router>
     </React.StrictMode>
   </Provider>,

@@ -20,10 +20,20 @@ export function getFormElements() {
         {label: "e-mail address", type: "email"},               // 9
         {label: "signature", type: "sign"},                     // 10
         {label: "credit card number", type: "cbNumber"},        // 11
-        {label: "expiration date", type: "cbExpDate"}           // 12
+        {label: "expiration date", type: "cbExpDate"},          // 12
+        {label: "security code", type: "cbSecuCode"}            // 13
         ]
 }
 //CHILDREN
+
+const CheckinForm = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-items: center;
+height: 60vh;
+width: 80vw;
+`
 
 function getSelectedQuestions(start, end) {
     const questions = []
@@ -36,14 +46,6 @@ function getSelectedQuestions(start, end) {
             type={formElements[i].type}
     />)}
     
-    const CheckinForm = styled.div`
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        height: 60vh;
-        width: 80vw;
-    `
     return (
         <CheckinForm>
             { questions }
@@ -66,7 +68,7 @@ function CheckIn() {
     if (currentPage === 4)
         return getSelectedQuestions(10, 11)
     if (currentPage === 5)
-        return getSelectedQuestions(11, 13)
+        return getSelectedQuestions(11, 14)
     if (currentPage === 6)
         return <Confirmation />
 }
