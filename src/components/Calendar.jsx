@@ -28,7 +28,7 @@ function Calendar() {
                     type: "updateAnswer",
                     payload: {
                         question: "arrivalDate",
-                        value: [startDate.format('YYYY-MM-DD')]
+                        value: [startDate.format('DD/MM/YYYY')]
                     }
                 }
             )
@@ -37,7 +37,7 @@ function Calendar() {
                     type: "updateAnswer",
                     payload: {
                         question: "departureDate",
-                        value: [endDate.format('YYYY-MM-DD')]
+                        value: [endDate.format('DD/MM/YYYY')]
                     }
                 }
             )

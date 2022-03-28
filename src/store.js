@@ -4,23 +4,28 @@ import produce from 'immer'
 const initialState = {
     language: "",
     currentPage: 0,
-    totalPages: 6,
+
+    totalPages: 8,
     // Elements from the questionaire :
 	questions: {
+        roomNumber: "",
+        firstname: "",
         surname: "",
-		firstname: "",
-		roomNumber: "",
 		arrivalDate: "",
 		departureDate: "",
 		birthDate: "",
 		birthPlace: "",
 		nationality: "",
 		address: "",
+        addressZipCode: "",
+        addressCity: "",
+        addressCountry: "",
 		mobile: "",
 		email: "",
 		sign: "",
 		cbNumber: "",
-		cbExpDate: "" 
+		cbExpDate: "",
+        cbSecurityCode: ""
 	}
 };
 
