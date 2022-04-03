@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux'
 import { useDispatch }  from 'react-redux'
-import Calendar from './Calendar'
 import Signature from './Signature'
 import styled from 'styled-components'
+import CalendarDatePicker from './Calendar'
 //import propTypes from 'prop-types'
 
 const Input = styled.input`
@@ -38,7 +38,7 @@ function GenerateInputField({label, type}) {
     if (type === "sign")
         return <Signature />
     if (type === "arrivalAndDepartureDates")
-        return <Calendar />
+        return <CalendarDatePicker />
     return (
             <InputContainer>
                 <label>
