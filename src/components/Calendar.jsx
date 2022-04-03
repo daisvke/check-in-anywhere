@@ -1,7 +1,5 @@
 import React from 'react'
 import { useDispatch }  from 'react-redux'
-import { useSelector } from 'react-redux'
-import Calendar from 'react-input-calendar'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
@@ -62,14 +60,14 @@ function CalendarDatePicker() {
         </div>
       )}
       selected={startDate}
-        onChange={ (startDate) => {
+        onChange={(startDate) => {
             setStartDate(startDate)
             dispatch(
                 {
                     type: "updateAnswer",
                     payload: {
                         question: "arrivalDate",
-                        value: [new Intl.DateTimeFormat(['ban', 'id']).format(startDate)]
+                        value: [startDate.toLocaleDateString()]
                     }
                 }
             )
@@ -136,7 +134,7 @@ function CalendarDatePicker() {
                 type: "updateAnswer",
                 payload: {
                     question: "departureDate",
-                    value: [new Intl.DateTimeFormat(['ban', 'id']).format(endDate)]
+                    value: [endDate.toLocaleDateString()]
                 }
             }
         )
