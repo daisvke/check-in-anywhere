@@ -4,22 +4,37 @@ import { getFormElements } from "../pages/Check-in"
 import LegalCB from "./Legal/CB"
 import LegalDamages from "./Legal/Damages"
 
+import { useState, useEffect } from "react"
+
 function Confirmation() {
+/*
+useEffect(() => {
+    fetch('/test', {
+        method: "POST",
+        headers: {
+            'Content-type': "application/json"
+        },
+        body: "HEY"
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+})*/
+
     const data = []
-    data[0] = useSelector(state => state.questions.roomNumber)
-    data[1] = useSelector(state => state.questions.firstname)
-    data[2] = useSelector(state => state.questions.surname)
-    data[3] = useSelector(state => state.questions.arrivalDate)
-    data[4] = useSelector(state => state.questions.departureDate)
-    data[5] = useSelector(state => state.questions.birthDate)
-    data[6] = useSelector(state => state.questions.birthPlace)
-    data[7] = useSelector(state => state.questions.nationality)
-    data[8] = useSelector(state => state.questions.address)
-    data[9] = useSelector(state => state.questions.addressZipCode)
-    data[10] = useSelector(state => state.questions.addressCity)
-    data[11] = useSelector(state => state.questions.addressCountry)
-    data[12] = useSelector(state => state.questions.mobile)
-    data[13] = useSelector(state => state.questions.email)
+//data[0] = useSelector(state => state.questions.roomNumber)
+    data[0] = useSelector(state => state.questions.firstname)
+    data[1] = useSelector(state => state.questions.surname)
+    data[2] = useSelector(state => state.questions.arrivalDate)
+    data[3] = useSelector(state => state.questions.departureDate)
+    data[4] = useSelector(state => state.questions.birthDate)
+    data[5] = useSelector(state => state.questions.birthPlace)
+    data[6] = useSelector(state => state.questions.nationality)
+    data[7] = useSelector(state => state.questions.address)
+    data[8] = useSelector(state => state.questions.addressZipCode)
+    data[9] = useSelector(state => state.questions.addressCity)
+    data[10] = useSelector(state => state.questions.addressCountry)
+    data[11] = useSelector(state => state.questions.mobile)
+    data[12] = useSelector(state => state.questions.email)
 
     const labels = getFormElements()
     
@@ -49,6 +64,7 @@ function Confirmation() {
     const signURL = useSelector(state => state.questions.sign)
 
     return (
+        <form action="/test" method="post">
         <ConfirmSheet>
             <ConfirmList>
                 {data.map((element, index) => (
@@ -61,7 +77,7 @@ function Confirmation() {
                     }
                     {
                         index >= 5 && labels[index - 1].label
-                    }:
+                    }:&nbsp;
                     </label>
                     <li key={`${element}-${index}`}>
                         { element }
@@ -71,6 +87,7 @@ function Confirmation() {
                 }
                 <div>
                     <LegalCB />
+                    { new Date().toLocaleDateString() }
                     <img src={signURL} alt="signature" />
                 </div>
                 <div>
@@ -79,8 +96,9 @@ function Confirmation() {
                 </div>
             </ConfirmList>
 
-            <button>confirm</button>
+            <button type="submit"/*onClick={saveToDatabase()}*/>SEND !</button>
         </ConfirmSheet>
+        </form>
     )
 }
 

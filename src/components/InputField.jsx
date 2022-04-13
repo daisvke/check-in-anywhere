@@ -25,7 +25,7 @@ const InputContainer = styled.div`
 function GenerateInputField({label, type}) {
     const dispatch = useDispatch()
     const currentValue = useSelector(state => state.questions[type])
-    const rooms = [
+ /*   const rooms = [
         "Please select",
         1, 2,
         11, 12, 14, 15,
@@ -34,11 +34,31 @@ function GenerateInputField({label, type}) {
         41, 42, 43, 44,
         51, 52
     ]
-
+*/
     if (type === "sign")
         return <Signature />
     if (type === "arrivalAndDepartureDates")
         return <CalendarDatePicker />
+        return (
+            <InputContainer>
+                <label>
+                    { label }
+                </label>
+                <Input type="text" name={label}
+                value={currentValue}
+                onChange={(e) => dispatch(
+                    {
+                        type: "updateAnswer",
+                        payload: {
+                            question: type,
+                            value: e.target.value
+                        }
+                    }
+                )} />
+            </InputContainer>
+        )
+
+    /*
     return (
             <InputContainer>
                 <label>
@@ -70,7 +90,7 @@ function GenerateInputField({label, type}) {
                     <option key={`${room}-${index}`}>{ room }</option>    
                 ))}</select>}
             </InputContainer>
-    )
+    )*/
 }
 /*
 GenerateInputField.protoTypes = {

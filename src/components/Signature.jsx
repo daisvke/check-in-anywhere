@@ -1,7 +1,9 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import SignatureCanvas from 'react-signature-canvas'
 import styled from 'styled-components'
+import LegalCB from './Legal/CB'
+import LegalDamages from './Legal/Damages'
 
 const SignContainer = styled.div`
     display: flex;
@@ -26,10 +28,14 @@ function Signature() {
             })
         }
     }
-    
+
+    const currentPage = useSelector(state => state.currentPage)
     const canvasRef = React.useRef()
+
     return (
         <SignContainer>
+            { currentPage === 6 && <LegalCB />}
+            { currentPage === 7 && <LegalDamages />}
             <p>Please sign here:</p>
             <SignatureCanvas
                 ref={ canvasRef }

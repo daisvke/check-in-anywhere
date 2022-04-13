@@ -4,11 +4,11 @@ import produce from 'immer'
 const initialState = {
     language: "",
     currentPage: 0,
-
+    timestamp: new Date().toLocaleString(),
     totalPages: 8,
+
     // Elements from the questionaire :
 	questions: {
-        roomNumber: "",
         firstname: "",
         surname: "",
 		arrivalDate: new Date().toLocaleDateString(),

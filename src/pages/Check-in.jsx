@@ -7,24 +7,25 @@ import styled from 'styled-components'
 
 export function getFormElements() {
     return [
-        {label: "room number", type: "roomNumber"},             // 0
-        {label: "firstname", type: "firstname"},                // 1
-        {label: "surname", type: "surname"},                    // 2
+     //   {label: "room number", type: "roomNumber"},             // 0
+        {label: "firstname", type: "firstname"},                // 0
+        {label: "surname", type: "surname"},                    // 1
         {label: "date of arrival at the establishment and intended date of departure",
-            type: "arrivalAndDepartureDates"},                  // 3
-        {label: "date of birth", type: "birthDate"},            // 4
-        {label: "place of birth", type: "birthPlace"},          // 5
-        {label: "nationality", type: "nationality"},            // 6
-        {label: "permanent address", type: "address"},          // 7
-        {label: "zip code", type: "addressZipCode"},            // 8
-        {label: "city", type: "addressCity"},                   // 9
-        {label: "country", type: "addressCountry"},             // 10
-        {label: "mobile number", type: "mobile"},               // 11
-        {label: "e-mail address", type: "email"},               // 12
-        {label: "signature", type: "sign"},                     // 13
-        {label: "credit card number", type: "cbNumber"},        // 14
-        {label: "expiration date", type: "cbExpDate"},          // 15
-        {label: "security code", type: "cbSecurityCode"}        // 16
+            type: "arrivalAndDepartureDates"},                  // 2
+        {label: "date of birth", type: "birthDate"},            // 3
+        {label: "place of birth", type: "birthPlace"},          // 4
+        {label: "nationality", type: "nationality"},            // 5
+        {label: "permanent address", type: "address"},          // 6
+        {label: "zip code", type: "addressZipCode"},            // 7
+        {label: "city", type: "addressCity"},                   // 8
+        {label: "country", type: "addressCountry"},             // 9
+        {label: "mobile number", type: "mobile"},               // 10
+        {label: "e-mail address", type: "email"},               // 11
+        {label: "credit card number", type: "cbNumber"},        // 12
+        {label: "expiration date", type: "cbExpDate"},          // 13
+        {label: "security code", type: "cbSecurityCode"},       // 14
+        {label: "signature", type: "sign"},                     // 15
+        {label: "signature", type: "sign"}                      // 16
         ]
 }
 //CHILDREN
@@ -55,27 +56,26 @@ function getSelectedQuestions(start, end) {
         </CheckinForm>
     )
 }
-
 function CheckIn() {
-
     const currentPage = useSelector(state => state.currentPage)
+
                    
     if (currentPage === 0)
         return <ChooseLanguage />
     if (currentPage === 1)
-        return getSelectedQuestions(0, 1)
+        return getSelectedQuestions(0, 2)
     if (currentPage === 2)
-        return getSelectedQuestions(1, 3)
+        return getSelectedQuestions(2, 3)
     if (currentPage === 3)
-        return getSelectedQuestions(3, 4)
+        return getSelectedQuestions(3, 6)
     if (currentPage === 4)
-        return getSelectedQuestions(4, 10)
+        return getSelectedQuestions(6, 10)
     if (currentPage === 5)
-        return getSelectedQuestions(11, 13)
+        return getSelectedQuestions(10, 12)
     if (currentPage === 6)
-        return getSelectedQuestions(13, 14)
+        return getSelectedQuestions(12, 16)
     if (currentPage === 7)
-        return getSelectedQuestions(14, 17)
+        return getSelectedQuestions(16, 17)
     if (currentPage === 8)
         return <Confirmation />
 }
