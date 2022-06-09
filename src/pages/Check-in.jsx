@@ -58,7 +58,6 @@ function getSelectedQuestions(start, end) {
 }
 function CheckIn() {
     const currentPage = useSelector(state => state.currentPage)
-
                    
     if (currentPage === 0)
         return <ChooseLanguage />

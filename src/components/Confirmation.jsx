@@ -3,10 +3,24 @@ import styled from "styled-components"
 import { getFormElements } from "../pages/Check-in"
 import LegalCB from "./Legal/CB"
 import LegalDamages from "./Legal/Damages"
-
-import { useState, useEffect } from "react"
+import axios from "axios"
 
 function Confirmation() {
+    const t1= useSelector(state => state.questions.firstname);
+    const t2= useSelector(state => state.questions.surname);
+    const handleSubmit = (event) => {
+        event.preventDefault()
+
+
+        axios.post('http://127.0.0.1:8888/api/index.php', {
+            data: {
+                t1: t1,
+                t2: t2
+            }
+        })
+
+//        axios.post('http://127.0.0.1:8888/api/index.php', data2)
+    }
 /*
 useEffect(() => {
     fetch('/test', {
@@ -62,9 +76,9 @@ useEffect(() => {
     `
 
     const signURL = useSelector(state => state.questions.sign)
-
+    
     return (
-        <form action="/test" method="post">
+        <form onSubmit={handleSubmit}>
         <ConfirmSheet>
             <ConfirmList>
                 {data.map((element, index) => (
