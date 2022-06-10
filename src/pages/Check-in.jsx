@@ -7,7 +7,6 @@ import styled from 'styled-components'
 
 export function getFormElements() {
     return [
-     //   {label: "room number", type: "roomNumber"},             // 0
         {label: "firstname", type: "firstname"},                // 0
         {label: "surname", type: "surname"},                    // 1
         {label: "date of arrival at the establishment and intended date of departure",

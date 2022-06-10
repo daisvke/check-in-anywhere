@@ -13,12 +13,44 @@ $conn = new DbConnect();
 $db = mysqli_connect("127.0.0.1", "root", "", "checkin");
 
 $str = file_get_contents('php://input');
-$postData = json_decode($str, true)['data']['t1'];
-$d = $postData;
+$postData = json_decode($str, true)['data'];
+$language = $postData['language'];
+$timestamp = $postData['timestamp'];
+$firstname = $postData['firstname'];
+$surname = $postData['surname'];
+$arrival_date = $postData['arrival_date'];
+$departure_date = $postData['departure_date'];
+$birth_date = $postData['birth_date'];
+$birth_place = $postData['birth_place'];
+$nationality = $postData['nationality'];
+$address = $postData['address'];
+$address_zipcode = $postData['address_zipcode'];
+$address_city = $postData['address_city'];
+$address_country = $postData['address_country'];
+$mobile = $postData['mobile'];
+$email = $postData['email'];
+$sign = $postData['sign'];
+$cb_number = $postData['cb_number'];
+$cb_exp_date = $postData['cb_exp_date'];
+$cb_security_code = $postData['cb_security_code'];
+
 $method = $_SERVER['REQUEST_METHOD'];
 switch($method) {
     case 'POST':
-        $sql = "INSERT INTO test (t1) VALUES ('$d')";
+        $sql = "INSERT INTO clients (
+                'language', 'timestamp', 'firstname', 'surname',
+                'arrival_date', 'departure_date', 'birth_date', 'birth_place', 'nationality',
+                'address', 'address_zipcode', 'address_city', 'address_country',
+                'mobile', 'email', 'sign',
+                'cb_number', 'cb_exp_date', 'cb_security_code''
+            )
+            VALUES (
+                '$language', '$timestamp', '$firstname', '$surname',
+                '$arrival_date', '$departure_date', '$birth_date', '$birth_place', '$nationality',
+                '$address', '$address_zipcode', '$address_city', '$address_country',
+                '$mobile', '$email', '$sign',
+                '$cb_number', '$cb_exp_date', '$cb_security_code'
+            )";
 
         if(mysqli_query($db, $sql)) {
             $data = ['status' => 1, 'message' => "Record successfully created"];

@@ -6,36 +6,55 @@ import LegalDamages from "./Legal/Damages"
 import axios from "axios"
 
 function Confirmation() {
-    const t1= useSelector(state => state.questions.firstname);
-    const t2= useSelector(state => state.questions.surname);
+    const language = useSelector(state => state.language)
+    const timestamp = useSelector(state => state.timestamp)
+    const firstname = useSelector(state => state.questions.firstname)
+    const surname = useSelector(state => state.questions.surname)
+    const arrivalDate = useSelector(state => state.questions.arrivalDate)
+    const departureDate = useSelector(state => state.questions.departureDate)
+    const birthDate = useSelector(state => state.questions.birthDate)
+    const birthPlace = useSelector(state => state.questions.birthPlace)
+    const nationality = useSelector(state => state.questions.nationality)
+    const address = useSelector(state => state.questions.address)
+    const addressZipCode = useSelector(state => state.questions.addressZipCode)
+    const addressCity = useSelector(state => state.questions.addressCity)
+    const addressCountry = useSelector(state => state.questions.addressCountry)
+    const mobile = useSelector(state => state.questions.mobile)
+    const email = useSelector(state => state.questions.email)
+    const sign = useSelector(state => state.questions.sign)
+    const cbNumber = useSelector(state => state.questions.cbNumber)
+    const cbExpDate = useSelector(state => state.questions.cbExpDate)
+    const cbSecurityCode = useSelector(state => state.questions.cbSecurityCode)
+
     const handleSubmit = (event) => {
         event.preventDefault()
 
-
         axios.post('http://127.0.0.1:8888/api/index.php', {
             data: {
-                t1: t1,
-                t2: t2
+                language: language,
+                timestamp: timestamp,
+                firstname: firstname,
+                surname: surname,
+                arrivalDate: arrivalDate,
+                departureDate: departureDate,
+                birthDate: birthDate,
+                birthPlace: birthPlace,
+                nationality: nationality,
+                address: address,
+                addressZipCode: addressZipCode,
+                addressCity: addressCity,
+                addressCountry: addressCountry,
+                mobile: mobile,
+                email: email,
+                sign: sign,
+                cbNumber: cbNumber,
+                cbExpDate: cbExpDate,
+                cbSecurityCode: cbSecurityCode
             }
         })
-
-//        axios.post('http://127.0.0.1:8888/api/index.php', data2)
     }
-/*
-useEffect(() => {
-    fetch('/test', {
-        method: "POST",
-        headers: {
-            'Content-type': "application/json"
-        },
-        body: "HEY"
-    })
-    .then(res => res.json())
-    .then(data => console.log(data))
-})*/
 
     const data = []
-//data[0] = useSelector(state => state.questions.roomNumber)
     data[0] = useSelector(state => state.questions.firstname)
     data[1] = useSelector(state => state.questions.surname)
     data[2] = useSelector(state => state.questions.arrivalDate)
@@ -84,14 +103,9 @@ useEffect(() => {
                 {data.map((element, index) => (
                 <FieldDiv>
                     <label>
-                    {
-                        (index < 5 && index !== 3 && index !== 4) ?
-                            labels[index].label :
-                                (index === 3 ? "arrival date" : (index < 5 && "departure date"))
-                    }
-                    {
-                        index >= 5 && labels[index - 1].label
-                    }:&nbsp;
+                    { (index === 0 || index === 1) && labels[index].label }
+                    { (index === 2 && "arrival date") || (index === 3 && "departure date") }
+                    { index >= 4 && labels[index - 1].label }:&nbsp;
                     </label>
                     <li key={`${element}-${index}`}>
                         { element }
@@ -102,15 +116,15 @@ useEffect(() => {
                 <div>
                     <LegalCB />
                     { new Date().toLocaleDateString() }
-                    <img src={signURL} alt="signature" />
+                    <img src={signURL} alt="" />
                 </div>
                 <div>
                     <LegalDamages />
-                    <img src={signURL} alt="signature" />
+                    <img src={signURL} alt="" />
                 </div>
             </ConfirmList>
 
-            <button type="submit"/*onClick={saveToDatabase()}*/>SEND !</button>
+            <button type="submit">SEND</button>
         </ConfirmSheet>
         </form>
     )
