@@ -38,11 +38,11 @@ $method = $_SERVER['REQUEST_METHOD'];
 switch($method) {
     case 'POST':
         $sql = "INSERT INTO clients (
-                'language', 'timestamp', 'firstname', 'surname',
-                'arrival_date', 'departure_date', 'birth_date', 'birth_place', 'nationality',
-                'address', 'address_zipcode', 'address_city', 'address_country',
-                'mobile', 'email', 'sign',
-                'cb_number', 'cb_exp_date', 'cb_security_code''
+                language, timestamp, firstname, surname,
+                arrival_date, departure_date, birth_date, birth_place, nationality,
+                address, address_zipcode, address_city, address_country,
+                mobile, email, sign,
+                cb_number, cb_exp_date, cb_security_code
             )
             VALUES (
                 '$language', '$timestamp', '$firstname', '$surname',
