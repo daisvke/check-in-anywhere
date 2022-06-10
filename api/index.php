@@ -18,21 +18,21 @@ $language = $postData['language'];
 $timestamp = $postData['timestamp'];
 $firstname = $postData['firstname'];
 $surname = $postData['surname'];
-$arrival_date = $postData['arrival_date'];
-$departure_date = $postData['departure_date'];
-$birth_date = $postData['birth_date'];
-$birth_place = $postData['birth_place'];
+$arrival_date = $postData['arrivalDate'];
+$departure_date = $postData['departureDate'];
+$birth_date = $postData['birthDate'];
+$birth_place = $postData['birthPlace'];
 $nationality = $postData['nationality'];
 $address = $postData['address'];
-$address_zipcode = $postData['address_zipcode'];
-$address_city = $postData['address_city'];
-$address_country = $postData['address_country'];
+$address_zipcode = $postData['addressZipCode'];
+$address_city = $postData['addressCity'];
+$address_country = $postData['addressCountry'];
 $mobile = $postData['mobile'];
 $email = $postData['email'];
 $sign = $postData['sign'];
-$cb_number = $postData['cb_number'];
-$cb_exp_date = $postData['cb_exp_date'];
-$cb_security_code = $postData['cb_security_code'];
+$cb_number = $postData['cbNumber'];
+$cb_exp_date = $postData['cbExpDate'];
+$cb_security_code = $postData['cbSecurityCode'];
 
 $method = $_SERVER['REQUEST_METHOD'];
 switch($method) {
@@ -58,41 +58,6 @@ switch($method) {
             $data = ['status' => 0, 'message' => "Failed to create record."];
         }
 
-        /*
-
-                language 	timestamp 	firstname 	surname 	arrival_date 	departure_date 
-        birth_date 	birth_place 	nationality 	address 	address_zipcode 	address_city
-        address_country 	mobile 	email 	sign 	cb_number 	cb_exp_date 	cb_security_code 
-
-        $sql = "INSERT INTO clients (firstname, email) VALUES ('$n', '$p')";
-
-        if(mysqli_query($db, $sql)) {
-            $data = ['status' => 1, 'message' => "Record successfully created"];
-        } else {
-            $data = ['status' => 0, 'message' => "Failed to create record."];
-        }
-        */
-
-
-        //$stmt = $db->prepare($sql);
-        //$stmt->bindParam("dai", "dai@dl.FR");
-
-
-        /*
-        $user = json_decode(file_get_contents('php://input'));
-        $sql = "INSERT INTO clients(firstname, email, mobile) values(:firstname, :email, :mobile)";
-        $stmt = $db->prepare($sql);
-        $stmt->bindParam(':name', $user->firstname);
-        $stmt->bindParam(':email', $user->email);
-        $stmt->bindParam(':mobile', $user->mobile);
-        $stmt->bindParam(':created_at', $date);
-
-        if($stmt->execute()) {
-            $data = ['status' => 1, 'message' => "Record successfully created"];
-        } else {
-            $data = ['status' => 0, 'message' => "Failed to create record."];
-        }
-        */
         echo json_encode($data);
         break;
 }
