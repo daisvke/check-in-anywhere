@@ -8,7 +8,7 @@ tomorrow.setDate(tomorrow.getDate() + 1);
 const initialState = {
     language: "",
     currentPage: 0,
-    timestamp: today.toLocaleString(),
+    timestamp: new Date().toLocaleString(),
     totalPages: 8,
 
     // Elements from the questionaire :

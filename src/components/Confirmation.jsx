@@ -33,8 +33,13 @@ function Confirmation() {
     const timestamp = useSelector(state => state.timestamp)
     const firstname = useSelector(state => state.questions.firstname)
     const surname = useSelector(state => state.questions.surname)
-    const arrivalDate = useSelector(state => state.questions.arrivalDate)
-    const departureDate = useSelector(state => state.questions.departureDate)
+
+    // These variables have to be converted from objects (dued to DatePicker) to strings
+    var arrivalDate = useSelector(state => state.questions.arrivalDate)
+    arrivalDate = String(arrivalDate)
+    var departureDate = useSelector(state => state.questions.departureDate)
+    departureDate = String(departureDate)
+
     const birthDate = useSelector(state => state.questions.birthDate)
     const birthPlace = useSelector(state => state.questions.birthPlace)
     const nationality = useSelector(state => state.questions.nationality)
