@@ -14,7 +14,10 @@ function CalendarDatePicker() {
     const [startDate, setStartDate] = React.useState(today)
     const tomorrow = new Date()
     tomorrow.setDate(tomorrow.getDate() + 1)
-    const [endDate, setEndDate] = React.useState(tomorrow);
+    const [endDate, setEndDate] = React.useState(tomorrow)
+    // Earliest possible departure date after startDate is set
+    var minDateAfterStartDate = new Date()
+    minDateAfterStartDate.setDate(startDate.getDate() + 1)
 
     return (
         <>
@@ -84,7 +87,7 @@ function CalendarDatePicker() {
         startDate={startDate}
         endDate={endDate}
         minDate={today}
-      monthsShown={2}
+        monthsShown={2}
     />
     <DatePicker
     dateFormat="dd/MM/yyyy"
@@ -151,8 +154,7 @@ function CalendarDatePicker() {
   selectsEnd
   startDate={startDate}
   endDate={endDate}
-  minDate={tomorrow}
-//  minDate={startDate.setDate(startDate.getDate() + 1)}
+  minDate={minDateAfterStartDate}
   monthsShown={2}
 />
 </>

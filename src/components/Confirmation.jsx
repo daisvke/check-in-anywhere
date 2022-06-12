@@ -5,6 +5,29 @@ import LegalCB from "./Legal/CB"
 import LegalDamages from "./Legal/Damages"
 import axios from "axios"
 
+const ConfirmSheet = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-items: center;
+`
+
+const ConfirmList = styled.ul`
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-items: left;
+list-style: none;
+padding-left: 10vw;
+padding-right: 10vw;
+`
+
+const FieldDiv = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: start;
+`
+
 function Confirmation() {
     const language = useSelector(state => state.language)
     const timestamp = useSelector(state => state.timestamp)
@@ -70,29 +93,6 @@ function Confirmation() {
     data[12] = useSelector(state => state.questions.email)
 
     const labels = getFormElements()
-    
-    const ConfirmSheet = styled.div`
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-    `
-
-    const ConfirmList = styled.ul`
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: left;
-        list-style: none;
-        padding-left: 10vw;
-        padding-right: 10vw;
-    `
-
-    const FieldDiv = styled.div`
-        display: flex;
-        flex-direction: row;
-        justify-content: start;
-    `
 
     const signURL = useSelector(state => state.questions.sign)
     
@@ -102,7 +102,7 @@ function Confirmation() {
             <ConfirmList>
                 {data.map((element, index) => (
                 <FieldDiv>
-                    <label>
+                    <label key={`${index}-${element}`}>
                     { (index === 0 || index === 1) && labels[index].label }
                     { (index === 2 && "arrival date") || (index === 3 && "departure date") }
                     { index >= 4 && labels[index - 1].label }:&nbsp;

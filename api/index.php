@@ -1,4 +1,5 @@
 <?php
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 header("Access-Control-Allow-Origin: *");
@@ -18,11 +19,12 @@ $timestamp = $postData['timestamp'];
 $firstname = $postData['firstname'];
 $surname = $postData['surname'];
 $arrival_date = $postData['arrivalDate'];
+
 /*
 // returns original date string assuming the format was Y-m-d H:i:s
 $date_array = $arrival_date;
 $date_string = date(
-    'Y-m-d H:i:s',
+    'd-m-Y',
     mktime($date_array['hour'], $date_array['minute'], $date_array['second'],
     $date_array['month'], $date_array['day'], $date_array['year'])
 );
