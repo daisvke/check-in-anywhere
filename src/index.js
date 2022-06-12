@@ -9,7 +9,7 @@ import Error from './components/Error'
 import Home from './pages/Home'
 import CheckIn from './pages/Check-in'
 import Navigation from './components/Navigation'
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
 const MainContainer = styled.div`
   display: flex;

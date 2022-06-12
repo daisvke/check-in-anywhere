@@ -1,6 +1,10 @@
 import { createStore } from 'redux';
 import produce from 'immer'
 
+const today = new Date();
+const tomorrow = new Date();
+tomorrow.setDate(tomorrow.getDate() + 1);
+
 const initialState = {
     language: "",
     currentPage: 0,
@@ -11,8 +15,8 @@ const initialState = {
 	questions: {
         firstname: "",
         surname: "",
-		arrivalDate: new Date().toLocaleDateString(),
-		departureDate: new Date().toLocaleDateString(),
+		arrivalDate: today.toLocaleDateString(),
+		departureDate: tomorrow.toLocaleDateString(),
 		birthDate: "",
 		birthPlace: "",
 		nationality: "",

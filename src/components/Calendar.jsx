@@ -2,11 +2,19 @@ import React from 'react'
 import { useDispatch }  from 'react-redux'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import { useSelector } from 'react-redux'
 
 function CalendarDatePicker() {
     const dispatch = useDispatch()
-    const [startDate, setStartDate] = React.useState(new Date());
-    const [endDate, setEndDate] = React.useState(new Date());
+
+    const arrivalDate = useSelector(state => state.questions.arrivalDate)
+    const departureDate = useSelector(state => state.questions.departureDate)
+
+    const today = new Date()
+    const [startDate, setStartDate] = React.useState(today)
+    const tomorrow = new Date()
+    tomorrow.setDate(tomorrow.getDate() + 1)
+    const [endDate, setEndDate] = React.useState(tomorrow);
 
     return (
         <>
@@ -75,6 +83,7 @@ function CalendarDatePicker() {
         selectsStart
         startDate={startDate}
         endDate={endDate}
+        minDate={today}
       monthsShown={2}
     />
     <DatePicker
@@ -139,10 +148,11 @@ function CalendarDatePicker() {
             }
         )
     }}
-    selectsEnd
-    startDate={startDate}
-    endDate={endDate}
-    minDate={startDate}
+  selectsEnd
+  startDate={startDate}
+  endDate={endDate}
+  minDate={tomorrow}
+//  minDate={startDate.setDate(startDate.getDate() + 1)}
   monthsShown={2}
 />
 </>

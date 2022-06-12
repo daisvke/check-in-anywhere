@@ -6,19 +6,28 @@ header("Access-Control-Allow-Headers: *");
 header("Access-Control-Allow-Methods: *");
 ini_set("allow_url_fopen", true);
 
-include("db_connect.php");
+require("db_connect.php");
 
 $conn = new DbConnect();
-//$db = $conn->connect();
 $db = mysqli_connect("127.0.0.1", "root", "", "checkin");
 
-$str = file_get_contents('php://input');
-$postData = json_decode($str, true)['data'];
+$dataStr = file_get_contents('php://input');
+$postData = json_decode($dataStr, true)['data'];
 $language = $postData['language'];
 $timestamp = $postData['timestamp'];
 $firstname = $postData['firstname'];
 $surname = $postData['surname'];
 $arrival_date = $postData['arrivalDate'];
+/*
+// returns original date string assuming the format was Y-m-d H:i:s
+$date_array = $arrival_date;
+$date_string = date(
+    'Y-m-d H:i:s',
+    mktime($date_array['hour'], $date_array['minute'], $date_array['second'],
+    $date_array['month'], $date_array['day'], $date_array['year'])
+);
+echo $date_string;
+*/
 $departure_date = $postData['departureDate'];
 $birth_date = $postData['birthDate'];
 $birth_place = $postData['birthPlace'];
@@ -33,6 +42,8 @@ $sign = $postData['sign'];
 $cb_number = $postData['cbNumber'];
 $cb_exp_date = $postData['cbExpDate'];
 $cb_security_code = $postData['cbSecurityCode'];
+
+$error = false;
 
 $method = $_SERVER['REQUEST_METHOD'];
 switch($method) {
@@ -50,14 +61,27 @@ switch($method) {
                 '$address', '$address_zipcode', '$address_city', '$address_country',
                 '$mobile', '$email', '$sign',
                 '$cb_number', '$cb_exp_date', '$cb_security_code'
-            )";
+        )";
 
-        if(mysqli_query($db, $sql)) {
-            $data = ['status' => 1, 'message' => "Record successfully created"];
-        } else {
-            $data = ['status' => 0, 'message' => "Failed to create record."];
-        }
-
-        echo json_encode($data);
+        if(mysqli_query($db, $sql))
+            $error = false;
+        else
+            $error = true;
         break;
 }
+
+if ($error === false)
+{
+    echo "Record successfully created";
+
+    $to = "daisuketanigawa@live.fr";
+    $body = "$firstname $surname has registered !\n"
+    . "=========================================\n"
+    . " Date-time: $timestamp\n"
+    . "=========================================\n";
+    $subject = "[Customer Registration]";
+    // Send mail
+    mail($to, $subject, $body);
+}
+else
+    echo "Failed to create record!";
