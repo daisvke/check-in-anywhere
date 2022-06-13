@@ -13,7 +13,7 @@ function LegalCB() {
             credit card number: { cbNumber }<br />
             expiration date: { cbExpDate }<br />
             security code: { cbSecurityCode }<br />
-
+            <br />
             I, { firstname /*address above*/ } { surname }, hereby authorise the hotel Louvre Sainte Anne located to the address above,
             to charge my credit card account for the charges incurred at the hotel.
         </p>
