@@ -4,7 +4,7 @@ import Signature from './Signature'
 import styled from 'styled-components'
 import CalendarDatePicker from './Calendar'
 
-const Input = styled.input`
+const   Input = styled.input`
     border: 0;
     border-bottom: 1px solid black;
     width: 20vw;
@@ -15,12 +15,12 @@ const Input = styled.input`
     }
 `
 
-const InputLabel = styled.label`
+const   InputLabel = styled.label`
     font-size: .9em;
     text-transform: uppercase;
 `
 
-const InputContainer = styled.div`
+const   InputContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;

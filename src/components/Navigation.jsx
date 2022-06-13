@@ -17,7 +17,6 @@ width: ${globals.navBlocWidth};
 const FormButton = styled.button`
 background-color: ${colors.pink};
 padding: .3em;
-margin-left: 1em;
 font-weight: 600;
 
 &:hover {

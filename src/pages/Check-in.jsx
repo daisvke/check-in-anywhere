@@ -30,12 +30,13 @@ export function getFormElements() {
 }
 
 const CheckinForm = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: space-around;
-align-items: center;
-min-height: 80vh;
-width: ${globals.mainBlocWidth};
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 80vh;
+    width: ${globals.mainBlocWidth};
+    padding-bottom: ${globals.mainBlocPaddingBottom}
 `
 
 function getSelectedQuestions(start, end) {
