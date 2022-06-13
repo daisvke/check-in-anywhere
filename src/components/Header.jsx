@@ -1,12 +1,12 @@
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import colors from '../utils/colors'
+import globals from '../utils/globals'
 
 const HeaderNav = styled.nav`
 position: fixed;
 top: 0;
-height: 6vh;
+height: ${globals.headerHeight};
 width: 100vw;
 display: flex;
 flex-direction: row;

@@ -10,11 +10,11 @@ import Home from './pages/Home'
 import CheckIn from './pages/Check-in'
 import Navigation from './components/Navigation'
 import styled, { createGlobalStyle } from 'styled-components';
+import globals from './utils/globals';
 
 const GlobalStyle = createGlobalStyle`
-    * {
-        font-family: Courier New, serif;
-    }
+    * { font-family: ${globals.fontFamily}; }
+    p { font-size: ${globals.fontSize}; }
 `
 
 const MainContainer = styled.div`
@@ -22,6 +22,7 @@ const MainContainer = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  margin-top: ${globals.mainBlocMarginTop};
 `
 
 ReactDOM.render(

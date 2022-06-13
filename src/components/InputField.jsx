@@ -3,7 +3,6 @@ import { useDispatch }  from 'react-redux'
 import Signature from './Signature'
 import styled from 'styled-components'
 import CalendarDatePicker from './Calendar'
-//import propTypes from 'prop-types'
 
 const Input = styled.input`
     border: 0;
@@ -64,46 +63,6 @@ function GenerateInputField({label, type}) {
                 )} />
             </InputContainer>
         )
-
-    /*
-    return (
-            <InputContainer>
-                <label>
-                    { label }
-                </label>
-                {(type !== "roomNumber") ?
-                <Input type="text" name={label}
-                value={currentValue}
-                onChange={(e) => dispatch(
-                    {
-                        type: "updateAnswer",
-                        payload: {
-                            question: type,
-                            value: e.target.value
-                        }
-                    }
-                )} />
-                : <select
-                onChange={(e) => dispatch(
-                    {
-                        type: "updateAnswer",
-                        payload: {
-                            question: type,
-                            value: e.target.value
-                        }
-                    }
-                )}
-                >{rooms.map((room, index) => (
-                    <option key={`${room}-${index}`}>{ room }</option>    
-                ))}</select>}
-            </InputContainer>
-    )*/
 }
-/*
-GenerateInputField.protoTypes = {
-    label: propTypes.string.isRequired,
-    type: propTypes.string.isRequired
-}
-*/
 
 export default GenerateInputField

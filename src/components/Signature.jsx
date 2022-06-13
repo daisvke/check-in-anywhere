@@ -10,6 +10,7 @@ const SignContainer = styled.div`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    margin-top: 2em;
 `
 
 function Signature() {

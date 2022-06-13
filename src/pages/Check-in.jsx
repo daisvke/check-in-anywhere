@@ -4,6 +4,7 @@ import GenerateInputField from '../components/InputField'
 import React from 'react'
 import Confirmation from '../components/Confirmation'
 import styled from 'styled-components'
+import globals from '../utils/globals'
 
 export function getFormElements() {
     return [
@@ -34,7 +35,7 @@ flex-direction: column;
 justify-content: space-around;
 align-items: center;
 height: 60vh;
-width: 80vw;
+width: ${globals.mainBlocWidth};
 `
 
 function getSelectedQuestions(start, end) {
@@ -43,9 +44,9 @@ function getSelectedQuestions(start, end) {
 
     for (var i=start; i < end; ++i) {
         questions.push(<GenerateInputField
-            key={`${formElements[i]}-${i}`}
-            label={formElements[i].label}
-            type={formElements[i].type}
+            key={ `${formElements[i]}-${i}` }
+            label={ formElements[i].label }
+            type={ formElements[i].type }
     />)}
     
     return (
@@ -54,6 +55,7 @@ function getSelectedQuestions(start, end) {
         </CheckinForm>
     )
 }
+
 function CheckIn() {
     const currentPage = useSelector(state => state.currentPage)
                    
