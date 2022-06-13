@@ -9,7 +9,7 @@ const FormNav = styled.nav`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
-position: absolute;
+position: fixed;
 top: 35vh;
 width: ${globals.navBlocWidth};
 `

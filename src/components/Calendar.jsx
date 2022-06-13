@@ -2,7 +2,6 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 const CalendarLabel = styled.label`

@@ -34,7 +34,7 @@ display: flex;
 flex-direction: column;
 justify-content: space-around;
 align-items: center;
-height: 60vh;
+min-height: 80vh;
 width: ${globals.mainBlocWidth};
 `
 
