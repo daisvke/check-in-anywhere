@@ -9,10 +9,16 @@ const Input = styled.input`
     border: 0;
     border-bottom: 1px solid black;
     width: 20vw;
+    text-transform: uppercase;
     text-align: center;
     &:focus {
         outline: 0;   
     }
+`
+
+const InputLabel = styled.label`
+    font-size: .9em;
+    text-transform: uppercase;
 `
 
 const InputContainer = styled.div`
@@ -25,6 +31,7 @@ const InputContainer = styled.div`
 function GenerateInputField({label, type}) {
     const dispatch = useDispatch()
     const currentValue = useSelector(state => state.questions[type])
+
  /*   const rooms = [
         "Please select",
         1, 2,
@@ -41,9 +48,9 @@ function GenerateInputField({label, type}) {
         return <CalendarDatePicker />
         return (
             <InputContainer>
-                <label>
+                <InputLabel>
                     { label }
-                </label>
+                </InputLabel>
                 <Input type="text" name={label}
                 value={currentValue}
                 onChange={(e) => dispatch(

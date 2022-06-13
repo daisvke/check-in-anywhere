@@ -30,7 +30,7 @@ justify-content: start;
 
 function Confirmation() {
     const language = useSelector(state => state.language)
-    const timestamp = useSelector(state => state.timestamp)
+    const timestamp =  new Date().toLocaleString();
     const firstname = useSelector(state => state.questions.firstname)
     const surname = useSelector(state => state.questions.surname)
 

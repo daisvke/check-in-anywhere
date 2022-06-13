@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import React from 'react'
 import styled from 'styled-components'
+import colors from '../utils/colors'
 
 const FormNav = styled.nav`
 display: flex;
@@ -11,11 +12,11 @@ align-items: center;
 `
 
 const FormButton = styled.button`
-color: white;
-background-color: #e8b7db;
+background-color: ${colors.pink};
 padding: .3em;
-border-radius: 30px;
+margin-left: 1em;
 font-weight: 600;
+
 &:hover {
     opacity: .7;
 }
@@ -28,15 +29,17 @@ function Navigation() {
 
     return (
         <FormNav>
-            {(currentPage > 0) && <FormButton onClick={() => {
+            {(currentPage > 0)
+                && <FormButton onClick={() => {
                 dispatch({ type: "prevPage" })
             }}>
-                PREV
+                &lt;
             </FormButton>}
-            {currentPage > 0 && (currentPage < totalPages) && <FormButton onClick={() => {
+            {currentPage > 0 && (currentPage < totalPages)
+                && <FormButton onClick={() => {
                 dispatch({ type: "nextPage" });
             }}>
-                NEXT
+                &gt;
             </FormButton>}
         </FormNav>
     )

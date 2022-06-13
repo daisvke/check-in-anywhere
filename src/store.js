@@ -8,7 +8,7 @@ tomorrow.setDate(tomorrow.getDate() + 1);
 const initialState = {
     language: "",
     currentPage: 0,
-    timestamp: new Date().toLocaleString(),
+    timestamp: "", //useless?
     totalPages: 8,
 
     // Elements from the questionaire :
@@ -42,6 +42,8 @@ function reducer(state = initialState, action) {
         return produce(state, (draft) => {--draft.currentPage});
     if (action.type === "nextPage" && state.currentPage < totalPages)
         return produce(state, (draft) => {++draft.currentPage});
+    if (action.type === "setLanguage")
+        return produce(state, (draft) => {draft.language = action.payload.value});
     if (action.type === "updateAnswer") {
         const question = action.payload.question;
         const answer = action.payload.value;

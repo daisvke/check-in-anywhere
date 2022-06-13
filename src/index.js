@@ -9,7 +9,13 @@ import Error from './components/Error'
 import Home from './pages/Home'
 import CheckIn from './pages/Check-in'
 import Navigation from './components/Navigation'
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+    * {
+        font-family: Courier New, serif;
+    }
+`
 
 const MainContainer = styled.div`
   display: flex;
@@ -22,6 +28,7 @@ ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
       <Router>
+        <GlobalStyle />
         <MainContainer>
         <Header />
         <Routes>

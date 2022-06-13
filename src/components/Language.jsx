@@ -1,17 +1,23 @@
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
+import colors from '../utils/colors'
 
 const LanguageList = styled.ul`
 display: flex;
 flex-direction: column;
-justify-content: space-around;
+justify-content: center;
 align-items: center;
 height: 60vh;
 list-style: none;
-font-size: 1.3em;
+font-size: .95em;
 `
 
 const Language = styled.li`
+margin-bottom: 1em;
+text-transform: uppercase;
+background-color: ${colors.pink};
+padding: .3em;
+
 &:hover {
     cursor: pointer;
     opacity: .7;
@@ -25,11 +31,11 @@ function ChooseLanguage() {
         <LanguageList>
             <Language onClick={() => {
                 dispatch({ type: "nextPage" });
-                dispatch({ type: "updateAnswer", payload: {question: "language", value: "eng"} })
+                dispatch({ type: "setLanguage", payload: {value: "eng"} })
             }}>english</Language>
             <Language onClick={() => {
                 dispatch({ type: "nextPage" });
-                dispatch({ type: "updateAnswer", payload: {question: "language", value: "fr"} })
+                dispatch({ type: "setLanguage", payload: {value: "fr"} })
             }}>french</Language>
         </LanguageList>
     )

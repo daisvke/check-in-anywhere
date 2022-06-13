@@ -4,19 +4,23 @@ import styled from 'styled-components'
 import colors from '../utils/colors'
 
 const HeaderNav = styled.nav`
-height: 13vh;
+position: fixed;
+top: 0;
+height: 6vh;
+width: 100vw;
 display: flex;
 flex-direction: row;
 justify-content: space-around;
 align-items: center;
+background-color: black;
 `
 
 const HeaderTitle = styled.h1`
-color: ${colors.blue};
+color: white;
+font-size: 1.2em;
 `
 
 const HeaderLink = styled(Link)`
-background-color: ${colors.blue};
 padding: 0.1em;
 color: white;
 text-decoration: none;
@@ -26,8 +30,8 @@ function Header() {
     const dispatch = useDispatch()
     return (
         <HeaderNav>
+            <HeaderTitle>CHECK-IN ANYWHERE</HeaderTitle>
             <HeaderLink to="/" onClick={dispatch({type:"resetPage"})}>HOME</HeaderLink>
-            <HeaderTitle>CHECK IN ANYWHERE</HeaderTitle>
         </HeaderNav>
     )
 }

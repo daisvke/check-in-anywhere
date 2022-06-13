@@ -27,7 +27,6 @@ export function getFormElements() {
         {label: "signature", type: "sign"}                      // 16
         ]
 }
-//CHILDREN
 
 const CheckinForm = styled.div`
 display: flex;

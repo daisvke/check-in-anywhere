@@ -16,12 +16,11 @@ function Home() {/*
   `
   const HomeLink = styled(Link)`
     text-decoration: none;
-    font-size: 1.5em;
+    font-size: 1em;
     font-weight: 500;
     color: white;
-    background-color: ${colors.pink};
+    background-color: red;
     padding: .6em;
-    border-radius: 30px;
     &:hover {
       opacity: .7;
     }
