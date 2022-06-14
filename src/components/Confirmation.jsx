@@ -85,7 +85,7 @@ function Confirmation() {
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    axios.post('http://127.0.0.1:8888/api/index.php', {
+    axios.post('http://127.0.0.1:8888/backend/index.php', {
       data: {
         language: language,
         timestamp: timestamp,

@@ -19,17 +19,6 @@ $timestamp = $postData['timestamp'];
 $firstname = $postData['firstname'];
 $surname = $postData['surname'];
 $arrival_date = $postData['arrivalDate'];
-
-/*
-// returns original date string assuming the format was Y-m-d H:i:s
-$date_array = $arrival_date;
-$date_string = date(
-    'd-m-Y',
-    mktime($date_array['hour'], $date_array['minute'], $date_array['second'],
-    $date_array['month'], $date_array['day'], $date_array['year'])
-);
-echo $date_string;
-*/
 $departure_date = $postData['departureDate'];
 $birth_date = $postData['birthDate'];
 $birth_place = $postData['birthPlace'];
