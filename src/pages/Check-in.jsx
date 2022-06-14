@@ -37,7 +37,6 @@ const CheckinForm = styled.div`
   justify-content: space-around;
   align-items: center;
   min-height: 80vh;
-  width: ${globals.mainBlocWidth};
   padding-bottom: ${globals.mainBlocPaddingBottom};
 `
 

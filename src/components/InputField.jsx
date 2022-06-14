@@ -3,7 +3,15 @@ import { useDispatch } from 'react-redux'
 import Signature from './Signature'
 import styled from 'styled-components'
 import CalendarDatePicker from './Calendar'
-import checkName from '../utils/functions'
+import {
+  checkAddress,
+  checkDate,
+  checkEmail,
+  checkName,
+  checkPhoneNbr,
+  checkZipCode,
+  isNumeric,
+} from '../utils/functions'
 
 const Input = styled.input`
   border: 0;
@@ -34,12 +42,33 @@ function GenerateInputField({ label, type }) {
   const dispatch = useDispatch()
 
   const handleChange = (e, value) => {
-    if (type === 'firstname') {
+    if (
+      type === 'firstname' ||
+      type === 'surname' ||
+      type === 'nationality' ||
+      type === 'addressCountry'
+    ) {
       if (value && !checkName(value[value.length - 1])) {
         //        dispatch({ type: 'setEnv', payload: { name: 'error', value: true } })
         return
       }
       //    dispatch({ type: 'setEnv', payload: { name: 'error', value: false } })
+    } else if (
+      type === 'birthPlace' ||
+      type === 'address' ||
+      type === 'addressCity'
+    ) {
+      if (value && !checkAddress(value[value.length - 1])) return
+    } else if (type === 'birthDate' || type === 'cbExpDate') {
+      if (value && !checkDate(value[value.length - 1])) return
+    } else if (type === 'cbNumber' || type === 'cbSecurityCode') {
+      if (value && !isNumeric(value[value.length - 1])) return
+    } else if (type === 'addressZipCode') {
+      if (value && !checkZipCode(value[value.length - 1])) return
+    } else if (type === 'mobile') {
+      if (value && !checkPhoneNbr(value[value.length - 1])) return
+    } else if (type === 'email') {
+      if (value && !checkEmail(value[value.length - 1])) return
     }
 
     dispatch({

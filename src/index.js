@@ -14,7 +14,10 @@ import globals from './utils/globals'
 
 const GlobalStyle = createGlobalStyle`
     * { font-family: ${globals.fontFamily}; }
-    p { font-size: ${globals.fontSize}; }
+    p {
+      font-size: ${globals.fontSize};
+      width: ${globals.mainBlocWidth}
+    }
 `
 
 const MainContainer = styled.div`
