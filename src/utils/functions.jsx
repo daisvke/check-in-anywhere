@@ -1,3 +1,3 @@
-export default function isAlpha(c) {
-    return /^[A-Z/ /'/-/]$/i.test(c)
+export default function checkName(c) {
+  return /^[A-Z/ /'/-/]$/i.test(c)
 }

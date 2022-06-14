@@ -28,7 +28,6 @@ export function getFormElements() {
     { label: 'expiration date', type: 'cbExpDate' }, // 13
     { label: 'security code', type: 'cbSecurityCode' }, // 14
     { label: 'signature', type: 'sign' }, // 15
-    { label: 'signature', type: 'sign' }, // 16
   ]
 }
 
@@ -86,8 +85,7 @@ function CheckIn() {
   if (currentPage === 4) return getSelectedQuestions(6, 10)
   if (currentPage === 5) return getSelectedQuestions(10, 12)
   if (currentPage === 6) return getSelectedQuestions(12, 16)
-  if (currentPage === 7) return getSelectedQuestions(16, 17)
-  if (currentPage === 8) return <Confirmation />
+  if (currentPage === 7) return <Confirmation />
 }
 
 export default CheckIn

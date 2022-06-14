@@ -35,8 +35,8 @@ function Signature() {
 
     return (
         <SignContainer>
-            { currentPage === 6 && <LegalCB />}
-            { currentPage === 7 && <LegalDamages />}
+            <LegalCB />
+            <LegalDamages />
             <p>Please sign here:</p>
             <SignatureCanvas
                 ref={ canvasRef }

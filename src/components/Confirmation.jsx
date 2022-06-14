@@ -115,6 +115,7 @@ function Confirmation() {
   return (
     <form onSubmit={handleSubmit}>
       <ConfirmSheet>
+          <p>Please verify your inputs and confirm the check-in</p>
         <ConfirmList>
           {data.map((element, index) => (
             <FieldDiv>

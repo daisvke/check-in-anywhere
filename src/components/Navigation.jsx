@@ -6,45 +6,83 @@ import colors from '../utils/colors'
 import globals from '../utils/globals'
 
 const FormNav = styled.nav`
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-position: fixed;
-top: 35vh;
-width: ${globals.navBlocWidth};
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: fixed;
+  top: 35vh;
+  width: ${globals.navBlocWidth};
 `
 
 const FormButton = styled.button`
-background-color: ${colors.pink};
-padding: .3em;
-font-weight: 600;
+  background-color: ${colors.pink};
+  padding: 0.3em;
+  font-weight: 600;
 
-&:hover {
-    opacity: .7;
-}
+  &:hover {
+    opacity: 0.7;
+  }
 `
 
 function Navigation() {
-    const dispatch = useDispatch()
-    const currentPage = useSelector(state => state.currentPage)
-    const totalPages = useSelector(state => state.totalPages)
+  const dispatch = useDispatch()
+  const currentPage = useSelector((state) => state.currentPage)
+  const totalPages = useSelector((state) => state.totalPages)
 
-    return (
-        <FormNav>
-            {(currentPage > 0)
-                && <FormButton onClick={() => {
-                dispatch({ type: "prevPage" })
-            }}>
-                &lt;
-            </FormButton>}
-            {currentPage > 0 && (currentPage < totalPages)
-                && <FormButton onClick={() => {
-                dispatch({ type: "nextPage" });
-            }}>
-                &gt;
-            </FormButton>}
-        </FormNav>
-    )
+  const data = []
+  data[0] = useSelector((state) => state.questions.firstname)
+  data[1] = useSelector((state) => state.questions.surname)
+  data[2] = useSelector((state) => state.questions.arrivalDate)
+  data[3] = useSelector((state) => state.questions.departureDate)
+  data[4] = useSelector((state) => state.questions.birthDate)
+  data[5] = useSelector((state) => state.questions.birthPlace)
+  data[6] = useSelector((state) => state.questions.nationality)
+  data[7] = useSelector((state) => state.questions.address)
+  data[8] = useSelector((state) => state.questions.addressZipCode)
+  data[9] = useSelector((state) => state.questions.addressCity)
+  data[10] = useSelector((state) => state.questions.addressCountry)
+  data[11] = useSelector((state) => state.questions.mobile)
+  data[12] = useSelector((state) => state.questions.email)
+
+  const cbNumber = useSelector((state) => state.questions.cbNumber)
+  const cbExpDate = useSelector((state) => state.questions.cbExpDate)
+  const cbSecurityCode = useSelector((state) => state.questions.cbSecurityCode)
+  const signURL = useSelector((state) => state.questions.sign)
+
+  return (
+    <FormNav>
+      {currentPage > 0 && (
+        <FormButton
+          onClick={() => {
+            dispatch({ type: 'prevPage' })
+          }}
+        >
+          &lt;
+        </FormButton>
+      )}
+
+      {currentPage > 0 &&
+        currentPage < totalPages &&
+        ((currentPage === 1 && data[0] && data[1]) ||
+          (currentPage === 2 && data[2] && data[3]) ||
+          (currentPage === 3 && data[4] && data[5] && data[6]) ||
+          (currentPage === 4 && data[7] && data[8] && data[9] && data[10]) ||
+          (currentPage === 5 && data[11] && data[12]) ||
+          (currentPage === 6 &&
+            cbNumber &&
+            cbExpDate &&
+            cbSecurityCode &&
+            signURL)) && (
+          <FormButton
+            onClick={() => {
+              dispatch({ type: 'nextPage' })
+            }}
+          >
+            &gt;
+          </FormButton>
+        )}
+    </FormNav>
+  )
 }
 
 export default Navigation

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import Signature from './Signature'
 import styled from 'styled-components'
 import CalendarDatePicker from './Calendar'
-import isAlpha from '../utils/functions'
+import checkName from '../utils/functions'
 
 const Input = styled.input`
   border: 0;
@@ -35,10 +35,11 @@ function GenerateInputField({ label, type }) {
 
   const handleChange = (e, value) => {
     if (type === 'firstname') {
-      if (isAlpha(value[value.length - 1]) === false) {
-        dispatch({ type: 'setEnv', payload: { name: 'error', value: true } })
+      if (value && !checkName(value[value.length - 1])) {
+//        dispatch({ type: 'setEnv', payload: { name: 'error', value: true } })
         return
       }
+  //    dispatch({ type: 'setEnv', payload: { name: 'error', value: false } })
     }
 
     dispatch({
@@ -71,7 +72,7 @@ function GenerateInputField({ label, type }) {
         value={inputValue}
         onChange={(e) => handleChange(e, e.target.value, type)}
       />
-      {error === true && <p>ERROR !!!</p>}
+      {/*error === true && <p>ERROR !!!</p>*/}
     </InputContainer>
   )
 }

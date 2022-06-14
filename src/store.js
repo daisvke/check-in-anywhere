@@ -9,7 +9,7 @@ const initialState = {
   language: '',
   currentPage: 0,
   timestamp: '', //useless?
-  totalPages: 8,
+  totalPages: 7,
   error: false,
   pageComplete: false,
 
