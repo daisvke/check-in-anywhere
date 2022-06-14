@@ -55,56 +55,13 @@ const SendButton = styled.button`
 function Confirmation() {
   const language = useSelector((state) => state.language)
   const timestamp = new Date().toLocaleString()
-  const firstname = useSelector((state) => state.questions.firstname)
-  const surname = useSelector((state) => state.questions.surname)
+  const signURL = useSelector((state) => state.questions.sign)
 
   // These variables have to be converted from objects (dued to DatePicker) to strings
   var arrivalDate = useSelector((state) => state.questions.arrivalDate)
   arrivalDate = String(arrivalDate)
   var departureDate = useSelector((state) => state.questions.departureDate)
   departureDate = String(departureDate)
-
-  const birthDate = useSelector((state) => state.questions.birthDate)
-  const birthPlace = useSelector((state) => state.questions.birthPlace)
-  const nationality = useSelector((state) => state.questions.nationality)
-  const address = useSelector((state) => state.questions.address)
-  const addressZipCode = useSelector((state) => state.questions.addressZipCode)
-  const addressCity = useSelector((state) => state.questions.addressCity)
-  const addressCountry = useSelector((state) => state.questions.addressCountry)
-  const mobile = useSelector((state) => state.questions.mobile)
-  const email = useSelector((state) => state.questions.email)
-  const sign = useSelector((state) => state.questions.sign)
-  const cbNumber = useSelector((state) => state.questions.cbNumber)
-  const cbExpDate = useSelector((state) => state.questions.cbExpDate)
-  const cbSecurityCode = useSelector((state) => state.questions.cbSecurityCode)
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-
-    axios.post('http://127.0.0.1:8888/api/index.php', {
-      data: {
-        language: language,
-        timestamp: timestamp,
-        firstname: firstname,
-        surname: surname,
-        arrivalDate: arrivalDate,
-        departureDate: departureDate,
-        birthDate: birthDate,
-        birthPlace: birthPlace,
-        nationality: nationality,
-        address: address,
-        addressZipCode: addressZipCode,
-        addressCity: addressCity,
-        addressCountry: addressCountry,
-        mobile: mobile,
-        email: email,
-        sign: sign,
-        cbNumber: cbNumber,
-        cbExpDate: cbExpDate,
-        cbSecurityCode: cbSecurityCode,
-      },
-    })
-  }
 
   const data = []
   data[0] = useSelector((state) => state.questions.firstname)
@@ -121,8 +78,39 @@ function Confirmation() {
   data[11] = useSelector((state) => state.questions.mobile)
   data[12] = useSelector((state) => state.questions.email)
 
+  const cbNumber = useSelector((state) => state.questions.cbNumber)
+  const cbExpDate = useSelector((state) => state.questions.cbExpDate)
+  const cbSecurityCode = useSelector((state) => state.questions.cbSecurityCode)
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+
+    axios.post('http://127.0.0.1:8888/api/index.php', {
+      data: {
+        language: language,
+        timestamp: timestamp,
+        firstname: data[0],
+        surname: data[1],
+        arrivalDate: arrivalDate,
+        departureDate: departureDate,
+        birthDate: data[4],
+        birthPlace: data[5],
+        nationality: data[6],
+        address: data[7],
+        addressZipCode: data[8],
+        addressCity: data[9],
+        addressCountry: data[10],
+        mobile: data[11],
+        email: data[12],
+        sign: signURL,
+        cbNumber: cbNumber,
+        cbExpDate: cbExpDate,
+        cbSecurityCode: cbSecurityCode,
+      },
+    })
+  }
+
   const labels = getFormElements()
-  const signURL = useSelector((state) => state.questions.sign)
 
   return (
     <form onSubmit={handleSubmit}>
