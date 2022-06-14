@@ -30,16 +30,16 @@ const InputContainer = styled.div`
 
 function GenerateInputField({ label, type }) {
   const inputValue = useSelector((state) => state.questions[type])
-  const error = useSelector((state) => state.error)
+  //  const error = useSelector((state) => state.error)
   const dispatch = useDispatch()
 
   const handleChange = (e, value) => {
     if (type === 'firstname') {
       if (value && !checkName(value[value.length - 1])) {
-//        dispatch({ type: 'setEnv', payload: { name: 'error', value: true } })
+        //        dispatch({ type: 'setEnv', payload: { name: 'error', value: true } })
         return
       }
-  //    dispatch({ type: 'setEnv', payload: { name: 'error', value: false } })
+      //    dispatch({ type: 'setEnv', payload: { name: 'error', value: false } })
     }
 
     dispatch({

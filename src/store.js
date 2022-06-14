@@ -10,8 +10,8 @@ const initialState = {
   currentPage: 0,
   timestamp: '', //useless?
   totalPages: 7,
-  error: false,
-  pageComplete: false,
+  submitted: false,
+  //error: false,
 
   // Elements from the questionaire :
   questions: {

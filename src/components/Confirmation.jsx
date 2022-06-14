@@ -1,10 +1,11 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { getFormElements } from '../pages/Check-in'
 import LegalCB from './Legal/CB'
 import LegalDamages from './Legal/Damages'
 import axios from 'axios'
 import globals from '../utils/globals'
+import Submitted from './Submitted'
 
 const ConfirmSheet = styled.div`
   display: flex;
@@ -53,6 +54,8 @@ const SendButton = styled.button`
 `
 
 function Confirmation() {
+  const dispatch = useDispatch()
+  const submitted = useSelector((state) => state.submitted)
   const language = useSelector((state) => state.language)
   const timestamp = new Date().toLocaleString()
   const signURL = useSelector((state) => state.questions.sign)
@@ -108,40 +111,52 @@ function Confirmation() {
         cbSecurityCode: cbSecurityCode,
       },
     })
+    dispatch({
+      type: 'setEnv',
+      payload: {
+        name: 'submitted',
+        value: true,
+      },
+    })
   }
 
   const labels = getFormElements()
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ConfirmSheet>
-          <p>Please verify your inputs and confirm the check-in</p>
-        <ConfirmList>
-          {data.map((element, index) => (
-            <FieldDiv>
-              <FieldLabel key={`${index}-${element}`}>
-                {(index === 0 || index === 1) && labels[index].label}
-                {(index === 2 && 'arrival date') ||
-                  (index === 3 && 'departure date')}
-                {index >= 4 && labels[index - 1].label}:&nbsp;
-              </FieldLabel>
-              <FieldElem key={`${element}-${index}`}>{element}</FieldElem>
-            </FieldDiv>
-          ))}
-          <LegalDiv>
-            <LegalCB />
-          </LegalDiv>
+    <>
+      {submitted === false && (
+        <form onSubmit={handleSubmit}>
+          <ConfirmSheet>
+            <p>Please verify your inputs and confirm the check-in</p>
+            <ConfirmList>
+              {data.map((element, index) => (
+                <FieldDiv key={`${index}`}>
+                  <FieldLabel key={`${index}-${element}`}>
+                    {(index === 0 || index === 1) && labels[index].label}
+                    {(index === 2 && 'arrival date') ||
+                      (index === 3 && 'departure date')}
+                    {index >= 4 && labels[index - 1].label}:&nbsp;
+                  </FieldLabel>
+                  <FieldElem key={`${element}-${index}`}>{element}</FieldElem>
+                </FieldDiv>
+              ))}
+              <LegalDiv>
+                <LegalCB />
+              </LegalDiv>
 
-          <LegalDiv>
-            <LegalDamages />
-            <p>{new Date().toLocaleDateString()}</p>
-            <img src={signURL} alt="" />
-          </LegalDiv>
-        </ConfirmList>
+              <LegalDiv>
+                <LegalDamages />
+                <p>{new Date().toLocaleDateString()}</p>
+                <img src={signURL} alt="" />
+              </LegalDiv>
+            </ConfirmList>
 
-        <SendButton type="submit">CONFIRM AND SEND</SendButton>
-      </ConfirmSheet>
-    </form>
+            <SendButton type="submit">CONFIRM AND SEND</SendButton>
+          </ConfirmSheet>
+        </form>
+      )}
+      {submitted === true && <Submitted />}
+    </>
   )
 }
 

@@ -28,6 +28,7 @@ function Navigation() {
   const dispatch = useDispatch()
   const currentPage = useSelector((state) => state.currentPage)
   const totalPages = useSelector((state) => state.totalPages)
+  const submitted = useSelector((state) => state.submitted)
 
   const data = []
   data[0] = useSelector((state) => state.questions.firstname)
@@ -51,7 +52,7 @@ function Navigation() {
 
   return (
     <FormNav>
-      {currentPage > 0 && (
+      {currentPage > 0 && submitted === false && (
         <FormButton
           onClick={() => {
             dispatch({ type: 'prevPage' })
