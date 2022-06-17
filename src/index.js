@@ -16,7 +16,8 @@ const GlobalStyle = createGlobalStyle`
     * { font-family: ${globals.fontFamily}; }
     p {
       font-size: ${globals.fontSize};
-      width: ${globals.mainBlocWidth}
+      width: ${globals.mainBlocWidth};
+      text-align: center;
     }
 `
 

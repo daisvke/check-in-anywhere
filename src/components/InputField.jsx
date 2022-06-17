@@ -91,12 +91,18 @@ function GenerateInputField({ label, type }) {
     ]
 */
   if (type === 'sign') return <Signature />
+
+  var inputType = 'text'
+  if (type === 'birthDate') inputType = 'date'
+  else if (type === 'email') inputType = 'email'
+  else if (type === 'cbExpDate') inputType = 'month'
+
   if (type === 'arrivalAndDepartureDates') return <CalendarDatePicker />
   return (
     <InputContainer>
       <InputLabel>{label}</InputLabel>
       <Input
-        type="text"
+        type={inputType}
         name={label}
         value={inputValue}
         onChange={(e) => handleChange(e, e.target.value, type)}

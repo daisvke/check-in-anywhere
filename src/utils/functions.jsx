@@ -1,9 +1,9 @@
 export function checkName(c) {
-  return /^[A-Z/ /'/-/]$/i.test(c)
+  return /^[A-Zàâçéèêëîïôûùüÿñæœ/ /'/-/]$/i.test(c)
 }
 
 export function checkAddress(c) {
-    return /^[0-9/A-Z/ /'/-/./#/&/,/]$/i.test(c)
+    return /^[0-9/A-Zàâçéèêëîïôûùüÿñæœ/ /'/-/./#/&/,/]$/i.test(c)
 }
 
 export function checkZipCode(c) {
@@ -15,7 +15,7 @@ export function checkPhoneNbr(c) {
 }
 
 export function checkEmail(c) {
-    return /^[0-9/-/_/@/./]$/i.test(c)
+    return /^[0-9/A-Z/-/_/@/./]$/i.test(c)
 }
 
 export function isNumeric(c) {

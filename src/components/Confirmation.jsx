@@ -88,6 +88,10 @@ function Confirmation() {
   const handleSubmit = (event) => {
     event.preventDefault()
 
+const header = {
+    'Content-Type': 'charset=utf-8'
+}
+
     axios.post('http://127.0.0.1:8888/backend/index.php', {
       data: {
         language: language,
@@ -110,6 +114,7 @@ function Confirmation() {
         cbExpDate: cbExpDate,
         cbSecurityCode: cbSecurityCode,
       },
+      headers: header
     })
     dispatch({
       type: 'setEnv',
@@ -124,7 +129,7 @@ function Confirmation() {
 
   return (
     <>
-      {submitted === false && (
+      {(
         <form onSubmit={handleSubmit}>
           <ConfirmSheet>
             <p>Please verify your inputs and confirm the check-in</p>

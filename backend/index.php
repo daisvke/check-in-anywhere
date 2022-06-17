@@ -11,6 +11,7 @@ require("db_connect.php");
 
 $conn = new DbConnect();
 $db = mysqli_connect("127.0.0.1", "root", "", "checkin");
+mysqli_set_charset($db, "utf8mb4");
 
 $dataStr = file_get_contents('php://input');
 $postData = json_decode($dataStr, true)['data'];
