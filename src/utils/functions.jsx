@@ -19,9 +19,9 @@ export function checkEmail(c) {
 }
 
 export function isNumeric(c) {
-    return /^[0-9/]$/i.test(c)
+    return /^[0-9]$/.test(c)
 }
 
 export function checkDate(c) {
-    return /^[0-9///]$/i.test(c)
+    return /^[0-9///]$/.test(c)
 }

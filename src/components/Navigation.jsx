@@ -66,13 +66,21 @@ function Navigation() {
         currentPage < totalPages &&
         ((currentPage === 1 && data[0] && data[1]) ||
           (currentPage === 2 && data[2] && data[3]) ||
-          (currentPage === 3 && data[4] && data[5] && data[6]) ||
-          (currentPage === 4 && data[7] && data[8] && data[9] && data[10]) ||
-          (currentPage === 5 && data[11] && data[12]) ||
+          (currentPage === 3 && data[4] && data[5].length > 1 && data[6]) ||
+          (currentPage === 4 &&
+            data[7] &&
+            data[8] &&
+            data[9].length > 1 &&
+            data[10].length > 2) ||
+          (currentPage === 5 &&
+            data[11].length > 4 &&
+            /@(.*)\.[A-Z]/i.test(data[12])) ||
           (currentPage === 6 &&
-            cbNumber &&
-            cbExpDate &&
-            cbSecurityCode &&
+            cbNumber.length >= 15 &&
+            (/0[1-9]\/[0-9][0-9]/.test(cbExpDate) ||
+              /1[0-2]\/[0-9][0-9]/.test(cbExpDate)) &&
+            cbSecurityCode.length > 2 &&
+            cbSecurityCode.length < 5 &&
             signURL)) && (
           <FormButton
             onClick={() => {
