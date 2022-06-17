@@ -16,15 +16,13 @@ font-weight: 500;
 color: white;
 background-color: red;
 padding: .6em;
+
 &:hover {
   opacity: .7;
 }
 `
 
-function Home() {/*
-  const state = store.getState()
-  const currentPage = useSelector((state) => state.currentPage)*/
-
+function Home() {
   return (
     <HomeDiv>
       <HomeLink to="./check-in">START CHECK-IN !</HomeLink>

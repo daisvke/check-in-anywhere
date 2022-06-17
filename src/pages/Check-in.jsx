@@ -32,10 +32,10 @@ export function getFormElements() {
 }
 
 const CheckInContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 `
 
 const CheckinForm = styled.div`
@@ -47,7 +47,9 @@ const CheckinForm = styled.div`
 `
 
 const IntroText = styled.p`
+  font-family: Tahoma, sans-serif;
   text-align: center;
+  margin-bottom: 5em;
 `
 
 function getSelectedQuestions(start, end) {
@@ -81,11 +83,13 @@ function CheckIn() {
           of time during the physical check-in!
           <br />
           Please fill all the input areas to get to the next page.
+          <br />
+          *The privacy policy of this website is similar to the policy applied on the official website of the hotel.
         </IntroText>
         {getSelectedQuestions(0, 2)}
       </CheckInContainer>
     )
-    
+
   if (currentPage === 2) return getSelectedQuestions(2, 3)
   if (currentPage === 3) return getSelectedQuestions(3, 6)
   if (currentPage === 4) return getSelectedQuestions(6, 10)

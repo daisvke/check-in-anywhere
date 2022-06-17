@@ -1,5 +1,4 @@
 const mainBlocWidth = 70
-const navBlocWidth = mainBlocWidth + 13
 
 const headerHeight = 2
 const mainBlocMarginTop = headerHeight + 2
@@ -10,8 +9,7 @@ const globals = {
   headerHeight: String(headerHeight) + 'em',
   mainBlocMarginTop: String(mainBlocMarginTop) + 'em',
   mainBlocWidth: String(mainBlocWidth) + 'vw',
-  navBlocWidth: String(navBlocWidth) + 'vw',
-  mainBlocPaddingBottom: '14vh',
+  mainBlocPaddingBottom: '5vh',
 }
 
 export default globals

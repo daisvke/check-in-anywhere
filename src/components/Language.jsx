@@ -10,6 +10,7 @@ const LanguageList = styled.ul`
   height: 60vh;
   list-style: none;
   font-size: 0.95em;
+  padding: 0;
 `
 
 const Language = styled.li`

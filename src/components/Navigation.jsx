@@ -3,15 +3,12 @@ import { useSelector } from 'react-redux'
 import React from 'react'
 import styled from 'styled-components'
 import colors from '../utils/colors'
-import globals from '../utils/globals'
 
 const FormNav = styled.nav`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  position: fixed;
-  top: 35vh;
-  width: ${globals.navBlocWidth};
+  justify-content: center;
+  width: 5vw;
 `
 
 const FormButton = styled.button`

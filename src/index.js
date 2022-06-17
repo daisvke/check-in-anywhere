@@ -15,11 +15,13 @@ import ProgressBar from './components/ProgressBar'
 
 const GlobalStyle = createGlobalStyle`
     * { font-family: ${globals.fontFamily}; }
+
     p {
       font-size: ${globals.fontSize};
       width: ${globals.mainBlocWidth};
       text-align: center;
     }
+
     label {
       font-size: 0.75em;
       font-family: Tahoma, sans-serif;
@@ -41,14 +43,14 @@ ReactDOM.render(
       <Router>
         <GlobalStyle />
         <MainContainer>
-            <Header />
-            <ProgressBar />
-            <Routes>
-              <Route path="*" element={<Error />} />
-              <Route exact path="/" element={<Home />} />
-              <Route path="/check-in" element={<CheckIn />} />
-            </Routes>
-            <Navigation />
+          <Header />
+          <ProgressBar />
+          <Routes>
+            <Route path="*" element={<Error />} />
+            <Route exact path="/" element={<Home />} />
+            <Route path="/check-in" element={<CheckIn />} />
+          </Routes>
+          <Navigation />
         </MainContainer>
       </Router>
     </React.StrictMode>
