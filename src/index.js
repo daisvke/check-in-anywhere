@@ -11,6 +11,7 @@ import CheckIn from './pages/Check-in'
 import Navigation from './components/Navigation'
 import styled, { createGlobalStyle } from 'styled-components'
 import globals from './utils/globals'
+import ProgressBar from './components/ProgressBar'
 
 const GlobalStyle = createGlobalStyle`
     * { font-family: ${globals.fontFamily}; }
@@ -36,6 +37,7 @@ ReactDOM.render(
         <GlobalStyle />
         <MainContainer>
           <Header />
+          <ProgressBar />
           <Routes>
             <Route path="*" element={<Error />} />
             <Route exact path="/" element={<Home />} />

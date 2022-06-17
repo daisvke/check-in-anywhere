@@ -31,6 +31,13 @@ export function getFormElements() {
   ]
 }
 
+const CheckInContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;  
+`
+
 const CheckinForm = styled.div`
   display: flex;
   flex-direction: column;
@@ -67,18 +74,19 @@ function CheckIn() {
   if (currentPage === 0) return <ChooseLanguage />
   if (currentPage === 1)
     return (
-      <div>
+      <CheckInContainer>
         <IntroText>
           Welcome to your check-in page!
           <br />
           By doing your check-in from this website you will gain a huge amount
           of time during the physical check-in!
           <br />
-          Please fill all the input areas to complete the check-in.
+          Please fill all the input areas to get to the next page.
         </IntroText>
         {getSelectedQuestions(0, 2)}
-      </div>
+      </CheckInContainer>
     )
+    
   if (currentPage === 2) return getSelectedQuestions(2, 3)
   if (currentPage === 3) return getSelectedQuestions(3, 6)
   if (currentPage === 4) return getSelectedQuestions(6, 10)
