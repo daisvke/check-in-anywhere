@@ -5,7 +5,7 @@ function ProgressBar() {
 const currentPage = useSelector(state => state.currentPage)
   return (currentPage > 0 &&
     <svg width="37.122vw">
-      <rect x="20" y="20" width="100vw" height="1" />
+      <rect x="20" y="20" width="350" height="1" />
       <circle
         cx="20"
         cy="20"
