@@ -43,7 +43,6 @@ const CheckinForm = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  min-height: 80vh;
   padding-bottom: ${globals.mainBlocPaddingBottom};
 `
 

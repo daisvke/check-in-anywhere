@@ -19,13 +19,16 @@ const Input = styled.input`
   width: 20vw;
   text-transform: uppercase;
   text-align: center;
+  margin-bottom: 2em;
+
   &:focus {
     outline: 0;
   }
 `
 
 const InputLabel = styled.label`
-  font-size: 0.9em;
+  font-size: 0.7em;
+  font-family: Tahoma, sans-serif;
   text-transform: uppercase;
 `
 

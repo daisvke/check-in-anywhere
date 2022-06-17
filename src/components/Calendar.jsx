@@ -4,11 +4,6 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import styled from 'styled-components'
 
-const CalendarLabel = styled.label`
-  font-size: 0.9em;
-  text-transform: uppercase;
-`
-
 const CalendarContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -33,7 +28,7 @@ function CalendarDatePicker() {
   return (
     <CalendarContainer>
       <CalendarInput>
-        <CalendarLabel>Check-in</CalendarLabel>
+        <label>Check-in</label>
         <DatePicker
           dateFormat="dd/MM/yyyy"
           renderCustomHeader={({
@@ -106,7 +101,7 @@ function CalendarDatePicker() {
         />
       </CalendarInput>
       <CalendarInput>
-        <CalendarLabel>Check-in</CalendarLabel>
+        <label>Check-in</label>
         <DatePicker
           dateFormat="dd/MM/yyyy"
           renderCustomHeader={({
