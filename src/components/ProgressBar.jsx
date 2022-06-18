@@ -9,7 +9,7 @@ function getX(index) {
 }
 
   return (
-    currentPage > 0 && (
+    currentPage > 0 && currentPage < 7 && (
       <svg width="48.4%">
         <rect x="11%" y="12%" width="78%" height="1" />
         <circle

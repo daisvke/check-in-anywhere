@@ -53,6 +53,18 @@ const SendButton = styled.button`
   font-weight: 800;
 `
 
+const SignBlock = styled.div`
+display: flex;
+flex-direction: raw;
+align-items: center;
+justify-content: space-between;
+  margin-top: 1em;
+`
+
+const SignDate = styled.p`
+    width: auto;
+`
+
 function Confirmation() {
   const dispatch = useDispatch()
   const submitted = useSelector((state) => state.submitted)
@@ -127,7 +139,10 @@ function Confirmation() {
       {submitted === false && (
         <form onSubmit={handleSubmit}>
           <ConfirmSheet>
-            <p>Please verify the data below and confirm to complete your check-in!</p>
+            <p>
+              Please verify the data below and confirm to complete your
+              check-in!
+            </p>
             <ConfirmList>
               {data.map((element, index) => (
                 <FieldDiv key={`${index}`}>
@@ -146,8 +161,10 @@ function Confirmation() {
 
               <LegalDiv>
                 <LegalDamages />
-                <p>{new Date().toLocaleDateString()}</p>
-                <img src={signURL} alt="" />
+                <SignBlock>
+                  <SignDate>{new Date().toLocaleDateString()}</SignDate>
+                  <img src={signURL} alt="" />
+                </SignBlock>
               </LegalDiv>
             </ConfirmList>
 

@@ -13,11 +13,30 @@ const FormNav = styled.nav`
 
 const FormButton = styled.button`
   background-color: ${colors.pink};
-  padding: 0.3em;
   font-weight: 600;
 
   &:hover {
     opacity: 0.7;
+  }
+`
+const ButtonPrevSpan = styled.span`
+  display: inline-block;
+  padding: 0.3em;
+  transition: 0.9s ease-in;
+  color: white;
+
+  &:hover {
+    transform: translatex(-25%);
+  }
+`
+const ButtonNextSpan = styled.span`
+  display: inline-block;
+  padding: 0.3em;
+  transition: 0.6s ease-in;
+  color: white;
+
+  &:hover {
+    transform: translatex(25%);
   }
 `
 
@@ -55,7 +74,7 @@ function Navigation() {
             dispatch({ type: 'prevPage' })
           }}
         >
-          &lt;
+          <ButtonPrevSpan>&lt;</ButtonPrevSpan>
         </FormButton>
       )}
 
@@ -63,10 +82,10 @@ function Navigation() {
         currentPage < totalPages &&
         ((currentPage === 1 && data[0] && data[1]) ||
           (currentPage === 2 && data[2] && data[3]) ||
-          (currentPage === 3 && data[4] && data[5].length > 1 && data[6]) ||
+          (currentPage === 3 && data[4] && data[5].length > 1 && data[6].length > 3) ||
           (currentPage === 4 &&
-            data[7] &&
-            data[8] &&
+            data[7].length > 4 &&
+            data[8].length > 1 &&
             data[9].length > 1 &&
             data[10].length > 2) ||
           (currentPage === 5 &&
@@ -84,7 +103,7 @@ function Navigation() {
               dispatch({ type: 'nextPage' })
             }}
           >
-            &gt;
+            <ButtonNextSpan>&gt;</ButtonNextSpan>
           </FormButton>
         )}
     </FormNav>

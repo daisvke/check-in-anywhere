@@ -2,6 +2,7 @@
   "name": "check_in_anywhere",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "proxy": "http://localhost:4000",
   "dependencies": {
     "@babel/runtime": "^7.17.2",
@@ -27,6 +28,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -52,6 +55,7 @@
   },
   "devDependencies": {
     "@types/react-dates": "^21.8.3",
+    "gh-pages": "^4.0.0",
     "prettier": "^2.5.1"
   }
 }

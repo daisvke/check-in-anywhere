@@ -51,11 +51,8 @@ function GenerateInputField({ label, type }) {
       type === 'nationality' ||
       type === 'addressCountry'
     ) {
-      if (value && !checkName(value[value.length - 1])) {
-        //        dispatch({ type: 'setEnv', payload: { name: 'error', value: true } })
+      if (value && !checkName(value[value.length - 1]))
         return
-      }
-      //    dispatch({ type: 'setEnv', payload: { name: 'error', value: false } })
     } else if (
       type === 'birthPlace' ||
       type === 'address' ||

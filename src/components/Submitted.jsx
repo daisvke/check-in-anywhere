@@ -3,7 +3,8 @@ import styled from 'styled-components'
 const EndText = styled.p`
   font-family: Tahoma, sans-serif;
   text-align: center;
-  margin-bottom: 5em;
+  margin-top: 5em;
+  line-height: 4em;
 `
 
 function Submitted() {

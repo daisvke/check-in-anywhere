@@ -13,6 +13,21 @@ const SignContainer = styled.div`
   margin-top: 2em;
 `
 
+const SignIntro = styled.div`
+  font-family: Tahoma, sans-serif;
+  font-size: .8em;
+  text-decoration: underline;
+  margin-top: 5em;
+  margin-bottom: 1em;
+`
+
+const SignButton = styled.button`
+    margin-top: .5em;
+    background-color: blue;
+    color: white;
+    border: white;
+`
+
 function Signature() {
   const dispatch = useDispatch()
   const canvasRef = React.useRef()
@@ -37,7 +52,7 @@ function Signature() {
     <SignContainer>
       <LegalCB />
       <LegalDamages />
-      <p>Please sign here:</p>
+      <SignIntro>Please sign here:</SignIntro>
       <SignatureCanvas
         ref={canvasRef}
         penColor="black"
@@ -51,13 +66,13 @@ function Signature() {
           style: { border: '1px solid blue' },
         }}
       />
-      <button
+      <SignButton
         onClick={() => {
           clearCanvas()
         }}
       >
         clear
-      </button>
+      </SignButton>
     </SignContainer>
   )
 }

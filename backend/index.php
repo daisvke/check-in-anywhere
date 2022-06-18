@@ -6,7 +6,17 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 header("Access-Control-Allow-Methods: *");
 ini_set("allow_url_fopen", true);
-
+$to = "daisuketanigawa@live.fr";
+$body = "haha me has registered !\n"
+. "=========================================\n"
+. " Date-time: madate\n"
+. "=========================================\n";
+$subject = "[Customer Registration]";
+// Send mail
+if (mail($to, $subject, $body))
+    echo "MAIL SENT";
+else
+    echo "UNSENT!!!!";
 require("db_connect.php");
 
 $conn = new DbConnect();
