@@ -2,7 +2,7 @@
   "name": "check_in_anywhere",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://daisvke.github.io/check-in-anywhere",
   "proxy": "http://localhost:4000",
   "dependencies": {
     "@babel/runtime": "^7.17.2",
