@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { useDispatch, useSelector } from 'react-redux'
 
 const HomeDiv = styled.div`
   display: flex;
@@ -32,6 +33,17 @@ const HomeSpan = styled.span`
 `
 
 function Home() {
+  const submitted = useSelector((state) => state.submitted)
+  const dispatch = useDispatch
+
+  dispatch({
+    type: 'setEnv',
+    payload: {
+      name: 'submitted',
+      value: false,
+    },
+  })
+
   return (
     <HomeDiv>
       <HomeLink to="./check-in">

@@ -46,9 +46,9 @@ ReactDOM.render(
           <Header />
           <ProgressBar />
           <Routes>
+            <Route exact path={globals.url} element={<Home />} />
+            <Route path={globals.url + 'check-in'} element={<CheckIn />} />
             <Route path="*" element={<Error />} />
-            <Route exact path="/" element={<Home />} />
-            <Route path="/check-in" element={<CheckIn />} />
           </Routes>
           <Navigation />
         </MainContainer>

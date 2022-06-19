@@ -31,7 +31,7 @@ function Header() {
     return (
         <HeaderNav>
             <HeaderTitle>CHECK-IN ANYWHERE</HeaderTitle>
-            <HeaderLink to="/" onClick={dispatch({type:"resetPage"})}>HOME</HeaderLink>
+            <HeaderLink to={globals.url} onClick={dispatch({type:"resetPage"})}>HOME</HeaderLink>
         </HeaderNav>
     )
 }
