@@ -24,11 +24,11 @@ function CalendarDatePicker() {
   // Earliest possible departure date after startDate is set
   var minDateAfterStartDate = new Date()
   minDateAfterStartDate.setDate(startDate.getDate() + 1)
-
+  
   return (
     <CalendarContainer>
       <CalendarInput>
-        <label>Check-in</label>
+        <label>check-in</label>
         <DatePicker
           dateFormat="dd/MM/yyyy"
           renderCustomHeader={({
@@ -101,7 +101,7 @@ function CalendarDatePicker() {
         />
       </CalendarInput>
       <CalendarInput>
-        <label>Check-in</label>
+        <label>Check-out</label>
         <DatePicker
           dateFormat="dd/MM/yyyy"
           renderCustomHeader={({

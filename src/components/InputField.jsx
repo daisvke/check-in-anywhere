@@ -96,7 +96,8 @@ function GenerateInputField({ label, type }) {
   if (type === 'birthDate') inputType = 'date'
   else if (type === 'email') inputType = 'email'
 
-  if (type === 'arrivalAndDepartureDates') return <CalendarDatePicker />
+  if (type === 'arrivalAndDepartureDates') return <CalendarDatePicker label='' />
+
   return (
     <InputContainer>
       <InputLabel>{label}</InputLabel>

@@ -100,7 +100,11 @@ function Confirmation() {
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    axios.post('http://127.0.0.1:8888/index.php', {
+    axios.post(String(globals.backendUrl), {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
       data: {
         language: language,
         timestamp: timestamp,
@@ -136,7 +140,7 @@ function Confirmation() {
 
   return (
     <>
-      {submitted === false && (
+      { (
         <form onSubmit={handleSubmit}>
           <ConfirmSheet>
             <p>

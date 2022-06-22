@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import SignUp from './SignUp'
 
 const HomeDiv = styled.div`
   display: flex;
@@ -32,8 +33,19 @@ const HomeSpan = styled.span`
   }
 `
 
+const SignInLink = styled(Link)`
+text-decoration: none;
+font-size: 1em;
+font-weight: 500;
+color: white;
+background-color: red;
+
+&:hover {
+  opacity: 0.7;
+}
+`
+
 function Home() {
-  const submitted = useSelector((state) => state.submitted)
   const dispatch = useDispatch
 
   dispatch({
@@ -46,9 +58,16 @@ function Home() {
 
   return (
     <HomeDiv>
+      
+    <div>
+      <SignUp />
+      <SignInLink to=""><span>Sign In</span></SignInLink>
+      </div>
+
       <HomeLink to="./check-in">
         <HomeSpan>START CHECK-IN !</HomeSpan>
       </HomeLink>
+
     </HomeDiv>
   )
 }

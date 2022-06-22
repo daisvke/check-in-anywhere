@@ -13,7 +13,13 @@ const initialState = {
   submitted: false,
   //error: false,
 
-  // Elements from the questionaire :
+  // Elements for Sign Up Page:
+  signUp: {
+    name: '',
+    email: ''
+  },
+
+  // Elements from the questionaire:
   questions: {
     firstname: '',
     surname: '',
