@@ -15,17 +15,17 @@ const SignContainer = styled.div`
 
 const SignIntro = styled.div`
   font-family: Tahoma, sans-serif;
-  font-size: .8em;
+  font-size: 0.8em;
   text-decoration: underline;
   margin-top: 5em;
   margin-bottom: 1em;
 `
 
 const SignButton = styled.button`
-    margin-top: .5em;
-    background-color: blue;
-    color: white;
-    border: white;
+  margin-top: 0.5em;
+  background-color: blue;
+  color: white;
+  border: white;
 `
 
 function Signature() {
@@ -43,7 +43,7 @@ function Signature() {
         .toDataURL('image/png')
       dispatch({
         type: 'updateAnswer',
-        payload: { question: 'sign', value: signURL },
+        payload: { category: 'questions', question: 'sign', value: signURL },
       })
     }
   }

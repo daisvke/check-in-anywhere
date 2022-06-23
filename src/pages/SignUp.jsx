@@ -1,50 +1,36 @@
-import styled from "styled-components"
-import { useDispatch, useSelector } from "react-redux"
-
-const Input = styled.input`
-  border: 0;
-  border-bottom: 1px solid black;
-  width: 20vw;
-  text-transform: uppercase;
-  text-align: center;
-  margin-bottom: 2em;
-
-  &:focus {
-    outline: 0;
-  }
-`
-
-const InputLabel = styled.label`
-  font-size: 0.7em;
-  font-family: Tahoma, sans-serif;
-  text-transform: uppercase;
-`
-
-const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-`
-
-function generateInputField({ label, type }) {
-    return <div>
-        <label>{ label }</label>
-        <input></input>
-    </div>
-}
+import GenerateSignUpInputField from '../components/SignUpInputField'
+import axios from 'axios'
+import globals from '../utils/globals'
+import { useSelector } from 'react-redux'
 
 function SignUp() {
-    const inputValue = useSelector((state) => state.signUp[type])
-    //  const error = useSelector((state) => state.error)
-    const dispatch = useDispatch()
+    const name = useSelector((state) => state.signUp.name)
+    const email = useSelector((state) => state.signUp.email)  
+    const password = useSelector((state) => state.signUp.password)  
 
-  const handleChange = (e, value) => {
-  }
+    function handleSubmit() {
+    axios.post(String(globals.signUpBackendUrl), {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        data: {
+          name: name,
+          email: email,
+          password: password
+        }
+    })
+}
 
-    return <form>
-        { generateInputField('Name of the establishment', 'name') }
+  return (
+    <form onSubmit={handleSubmit}>
+        {GenerateSignUpInputField('Name of the establishment', 'name')}
+        {GenerateSignUpInputField('Email', 'email')}
+        {GenerateSignUpInputField('Password', 'password')}
+        {GenerateSignUpInputField('Confirm password', 'confPassword')}
+        <input type="submit" value="Submit" />
     </form>
+  )
 }
 
 export default SignUp

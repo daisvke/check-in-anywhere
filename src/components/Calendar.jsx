@@ -24,7 +24,7 @@ function CalendarDatePicker() {
   // Earliest possible departure date after startDate is set
   var minDateAfterStartDate = new Date()
   minDateAfterStartDate.setDate(startDate.getDate() + 1)
-  
+
   return (
     <CalendarContainer>
       <CalendarInput>
@@ -88,6 +88,7 @@ function CalendarDatePicker() {
             dispatch({
               type: 'updateAnswer',
               payload: {
+                category: 'questions',
                 question: 'arrivalDate',
                 value: [startDate.toLocaleDateString()],
               },
@@ -161,6 +162,7 @@ function CalendarDatePicker() {
             dispatch({
               type: 'updateAnswer',
               payload: {
+                category: 'questions',
                 question: 'departureDate',
                 value: [endDate.toLocaleDateString()],
               },

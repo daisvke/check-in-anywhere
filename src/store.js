@@ -11,12 +11,14 @@ const initialState = {
   timestamp: '', //useless?
   totalPages: 7,
   submitted: false,
-  //error: false,
+  error: false,
 
   // Elements for Sign Up Page:
   signUp: {
     name: '',
-    email: ''
+    email: '',
+    password: '',
+    confPassword: ''
   },
 
   // Elements from the questionaire:
@@ -63,10 +65,11 @@ function reducer(state = initialState, action) {
     })
   }
   if (action.type === 'updateAnswer') {
+    const category = action.payload.category
     const question = action.payload.question
     const answer = action.payload.value
     return produce(state, (draft) => {
-      draft.questions[question] = answer
+      draft[category][question] = answer
     })
   }
   return state

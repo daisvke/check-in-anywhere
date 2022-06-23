@@ -45,35 +45,37 @@ function GenerateInputField({ label, type }) {
   const dispatch = useDispatch()
 
   const handleChange = (e, value) => {
+    const c = value[value.length - 1]
+
     if (
       type === 'firstname' ||
       type === 'surname' ||
       type === 'nationality' ||
       type === 'addressCountry'
     ) {
-      if (value && !checkName(value[value.length - 1]))
-        return
+      if (value && !checkName(c)) return
     } else if (
       type === 'birthPlace' ||
       type === 'address' ||
       type === 'addressCity'
     ) {
-      if (value && !checkAddress(value[value.length - 1])) return
+      if (value && !checkAddress(c)) return
     } else if (type === 'birthDate' || type === 'cbExpDate') {
-      if (value && !checkDate(value[value.length - 1])) return
+      if (value && !checkDate(c)) return
     } else if (type === 'cbNumber' || type === 'cbSecurityCode') {
-      if (value && !isNumeric(value[value.length - 1])) return
+      if (value && !isNumeric(c)) return
     } else if (type === 'addressZipCode') {
-      if (value && !checkZipCode(value[value.length - 1])) return
+      if (value && !checkZipCode(c)) return
     } else if (type === 'mobile') {
-      if (value && !checkPhoneNbr(value[value.length - 1])) return
+      if (value && !checkPhoneNbr(c)) return
     } else if (type === 'email') {
-      if (value && !checkEmail(value[value.length - 1])) return
+      if (value && !checkEmail(c)) return
     }
 
     dispatch({
       type: 'updateAnswer',
       payload: {
+        category: 'questions',
         question: type,
         value: e.target.value,
       },
@@ -96,7 +98,8 @@ function GenerateInputField({ label, type }) {
   if (type === 'birthDate') inputType = 'date'
   else if (type === 'email') inputType = 'email'
 
-  if (type === 'arrivalAndDepartureDates') return <CalendarDatePicker label='' />
+  if (type === 'arrivalAndDepartureDates')
+    return <CalendarDatePicker label="" />
 
   return (
     <InputContainer>
