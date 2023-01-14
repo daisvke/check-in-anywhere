@@ -68,6 +68,7 @@ const SignDate = styled.p`
 function Confirmation() {
   const dispatch = useDispatch()
   const submitted = useSelector((state) => state.submitted)
+  const error = useSelector((state) => state.error)
   const language = useSelector((state) => state.language)
   const timestamp = new Date().toLocaleString()
   const signURL = useSelector((state) => state.questions.sign)
@@ -123,15 +124,41 @@ function Confirmation() {
         cbSecurityCode: cbSecurityCode
       }
     })
-    .then((response) => {
+    .then(response => {
       console.log(response)
+      
+      dispatch({
+        type: 'setEnv',
+        payload: {
+          name: 'error',
+          value: false
+        }
+      })
+      dispatch({
+        type: 'setEnv',
+        payload: {
+          name: 'submitted',
+          value: true
+        }
+      })
     })
-    dispatch({
-      type: 'setEnv',
-      payload: {
-        name: 'submitted',
-        value: true
-      },
+    .catch(error => {
+      console.log(error)
+
+      dispatch({
+        type: 'setEnv',
+        payload: {
+          name: 'submitted',
+          value: false
+        }
+      })
+      dispatch({
+        type: 'setEnv',
+        payload: {
+          name: 'error',
+          value: true
+        }
+      })
     })
   }
 
@@ -175,7 +202,8 @@ function Confirmation() {
           </ConfirmSheet>
         </form>
       )}
-      {submitted === true && <Submitted />}
+      {(submitted === true && <Submitted success={true} />)
+      || (error === true && <Submitted success={false} />)}
     </>
   )
 }

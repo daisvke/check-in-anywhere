@@ -35,19 +35,20 @@ $key = $new_id . ft_keygen($charset);
 //
 
 $method = $_SERVER['REQUEST_METHOD'];
-switch($method) {
-    case 'POST':
-        $sql = "INSERT INTO users (
-                timestamp, name, email, password, url_key
-            )
-            VALUES (
-                '$timestamp', '$name', '$email', '$password', '$key'
-        )";
+if ($method === "POST")
+{
+    $sql = "INSERT INTO users (
+            timestamp, name, email, password, url_key
+        )
+        VALUES (
+            '$timestamp', '$name', '$email', '$password', '$key'
+    )";
 
-        if ($res = mysqli_query($db, $sql))
-            echo "NEW USER REGISTERED!";
-        else
-            echo "ERROR WHILE REGISTERING NEW USER!";
+    if (mysqli_query($db, $sql))
+        echo "NEW USER REGISTERED!";
+    else {
         mysqli_close($db);
-        break;
+        throw new Exception('ERROR WHILE REGISTERING NEW USER!');
+    }
+    mysqli_close($db);
 }

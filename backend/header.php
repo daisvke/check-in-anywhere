@@ -6,6 +6,21 @@ use ft\DotEnv;
 
 define("MAIL", getenv('MAIL'));
 
+$to = "daisuketanigawa@live.fr";
+$fullname = "full name";
+$body = "$fullname has registered !\n";
+$subject = "[Customer Registration]";
+// Manage non western characters
+$subject = '=?UTF-8?B?'. base64_encode($subject) . '?=';
+$headers ='Content-Type: text/plain; charset="utf-8"'."\r\n";
+$headers .= "Reply-To: $fullname <daisuketanigawa@live.fr>\r\n"
+    . "From: $fullname <daisuketanigawa@live.fr>\r\n"
+    . "X-Mailer: PHP/" . phpversion();
+if (mail($to, $subject, $body, $headers)) {
+    echo "222Message sent!";
+} else {
+    echo "222An error occurred while sending the mail...";
+}
 // Switch between development/production
 define("DEV", 0);
 define("PROD", 1);
