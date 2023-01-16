@@ -101,6 +101,44 @@ function Confirmation() {
   const handleSubmit = (event) => {
     event.preventDefault()
 
+    const onFulfilled = (response) => {
+      console.log(response)
+
+      dispatch({
+        type: 'setEnv',
+        payload: {
+          name: 'error',
+          value: false
+        }
+      })
+      dispatch({
+        type: 'setEnv',
+        payload: {
+          name: 'submitted',
+          value: true
+        }
+      })
+    }
+
+    const onRejected = (response) => {
+      console.log(response)
+
+      dispatch({
+        type: 'setEnv',
+        payload: {
+          name: 'submitted',
+          value: false
+        }
+      })
+      dispatch({
+        type: 'setEnv',
+        payload: {
+          name: 'error',
+          value: true
+        }
+      })
+    }
+
     axios.post(globals.backendUrl, {
       data: {
         language: language,
@@ -124,42 +162,8 @@ function Confirmation() {
         cbSecurityCode: cbSecurityCode
       }
     })
-    .then(response => {
-      console.log(response)
-      
-      dispatch({
-        type: 'setEnv',
-        payload: {
-          name: 'error',
-          value: false
-        }
-      })
-      dispatch({
-        type: 'setEnv',
-        payload: {
-          name: 'submitted',
-          value: true
-        }
-      })
-    })
-    .catch(error => {
-      console.log(error)
-
-      dispatch({
-        type: 'setEnv',
-        payload: {
-          name: 'submitted',
-          value: false
-        }
-      })
-      dispatch({
-        type: 'setEnv',
-        payload: {
-          name: 'error',
-          value: true
-        }
-      })
-    })
+    .then(response => { onFulfilled(response) },
+          response => { onRejected(response) })
   }
 
   const labels = getFormElements()

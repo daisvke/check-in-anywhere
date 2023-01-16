@@ -1,3 +1,4 @@
+import globals from '../../utils/globals'
 import styled from 'styled-components'
 
 const Paragraph = styled.p`
@@ -17,14 +18,14 @@ function LegalDamages() {
         REGULATION, 200 EUROS WILL BE CHARGED AT THE CHECK-OUT
       </Paragraph>
       <Paragraph>
-        The IT resources that the hotel Louvre Sainte Anne offers should in no
+        The IT resources that the { globals.hotelName } offers should in no
         way be used for reproduction, representation, provision or communication
         to the public of works or objects protected by law copyright or related
         right, such as text, images, photographs, musical works, audiovisual
         works, software and video games without the permission of copyright
         holders provided the books I and II of the Code of intellectual property
         when such authorization is required. The user is obliged to comply with
-        the security policy of the Louvre Sainte Anne Hotel including rules for
+        the security policy of the { globals.hotelName } including rules for
         using security means implemented in order to prevent misuse of computer
         resources, and is refrain from any act detrimental to the effectiveness
         of these methods. Responsibility of the holder of access does not

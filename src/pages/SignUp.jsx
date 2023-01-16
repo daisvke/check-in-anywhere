@@ -16,6 +16,22 @@ function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault()
 
+    const onFulfilled = (response) => {
+      console.log(response)
+      // Once new user is created, redirect to Sign in page
+      dispatch({
+        type: 'setEnv',
+        payload: {
+          name: 'signedIn',
+          value: true,
+        }
+      })
+    }
+
+    const onRejected = (response) => {
+      console.log(response)
+    }
+
     // Send data to php file and new create user on database
     axios.post(globals.signUpBackEndUrl, {
       data: {
@@ -25,17 +41,8 @@ function SignUp() {
         password: password,
       },
     })
-    .then((response) => {
-      console.log(response)
-    })
-    // Once new user is created, redirect to Sign in page
-    dispatch({
-      type: 'setEnv',
-      payload: {
-        name: 'signedIn',
-        value: true,
-      },
-    })
+    .then(response => { onFulfilled(response) },
+          response => { onRejected(response) })
   }
 
   return (

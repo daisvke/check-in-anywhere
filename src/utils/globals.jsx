@@ -26,6 +26,7 @@ const globals = {
   backendUrl: backendUrl,
   signUpBackEndUrl: signUpBackEndUrl,
   signInBackEndUrl: signInBackEndUrl,
+  hotelName: "My Hotel",
   fontFamily: 'Courier New, serif',
   fontSize: '.85em',
   headerHeight: String(headerHeight) + 'em',

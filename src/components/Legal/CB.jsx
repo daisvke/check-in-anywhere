@@ -1,3 +1,4 @@
+import globals from "../../utils/globals"
 import { useSelector } from "react-redux"
 import styled from "styled-components"
 
@@ -23,7 +24,8 @@ function LegalCB() {
             expiration date: { cbExpDate }<br />
             security code: { cbSecurityCode }<br />
             <br />
-            I, <NameSpan>{ firstname } { surname }</NameSpan>, hereby authorize Hotel Louvre Sainte Anne located at the address above,
+            I, <NameSpan>{ firstname } { surname }</NameSpan>, hereby
+            authorize { globals.hotelName } located at the address above,
             to charge my credit card account for the charges incurred at the hotel.
         </Text>
     </div>)
