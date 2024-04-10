@@ -32,7 +32,7 @@ function SignUp() {
       console.log(response)
     }
 
-    // Send data to php file and new create user on database
+    // Send data to php file and create new user on database
     axios.post(globals.signUpBackEndUrl, {
       data: {
         timestamp:timestamp,
